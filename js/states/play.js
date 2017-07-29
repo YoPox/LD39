@@ -61,7 +61,8 @@ var playState = {
     },
 
     update: function() {
-        background.tilePosition.x -= 0.001*scrollSprite.body.velocity.x;
+        // background.tilePosition.x -= 0.001*scrollSprite.body.velocity.x;
+        background.tilePosition.x = layerGround.position.x/2;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
