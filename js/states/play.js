@@ -15,10 +15,13 @@ var playState = {
         // var buffer = game.cache.getBinary('xm');
         // music.play(buffer);
 
-        background = game.add.tileSprite(0, 0, 4096, 512, "background");
-
         game.stage.backgroundColor = "#181225";
         game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        // Background
+        background = game.add.tileSprite(0, 0, 4096, 288, "background");
+        // game.physics.arcade.enable(background);
+        // background.body.velocity.x = 30;
 
         // Map init
         map = game.add.tilemap('map1');
@@ -36,8 +39,8 @@ var playState = {
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
         rob.body.velocity.x = 125;
-        rob.body.gravity.y = 400;
-        rob.body.bounce.y = 0.1;
+        rob.body.gravity.y = 800;
+        rob.body.bounce.y = 0;
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
@@ -55,6 +58,7 @@ var playState = {
     },
 
     update: function() {
+        background.tilePosition.x -= 0.001*scrollSprite.body.velocity.x;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
@@ -73,14 +77,7 @@ function collectUranium(sprite, ura) {
 }
 
 function input() {
-    if (spaceKey.isDown) {
-      if (!justPressedSpace) {
-        jump();
-        justPressedSpace = true;
-      }
-    } else {
-      justPressedSpace = false;
-    }
+    jump();
 
     if (rightKey.isDown) {
         eqPos = -30;
@@ -92,8 +89,34 @@ function input() {
 }
 
 function jump() {
-    if (rob.body.blocked.down) {
+    //initialize the static variables
+    if ( typeof jump.canJump == 'undefined' ) {
+        jump.canJump = true;
+    }
+    if ( typeof jump.justJumped == 'undefined' ) {
+        jump.justJumped = false;
+    }
+    if ( typeof jump.isJumping == 'undefined' ) {
+        jump.isJumping = false;
+    }
+
+    if (rob.body.blocked.down) { //if on the ground
+        jump.canJump = true;
+        jump.justJumped = true; //false but this is a workaround
+    } else {
+        if (jump.justJumped) {
+            jump.justJumped = false;
+            setTimeout(function () {
+                jump.canJump = false;
+            }, 220);
+        }
+    }
+    if (jump.canJump && spaceKey.isDown) {
         rob.body.velocity.y = -200;
+        jump.isJumping = true;
+    }
+    if (!spaceKey.isDown && jump.isJumping) {
+        jump.canJump = false;
     }
 }
 
