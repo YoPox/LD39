@@ -3,6 +3,8 @@ var uranium;
 var uraniumCount;
 var justPressedSpace = false;
 var background;
+// var backerground;
+// var foreground;
 var rob;
 var map;
 var gui = [];
@@ -20,6 +22,10 @@ var playState = {
 
         game.stage.backgroundColor = "#181225";
         game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        // Backerground
+        // backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
+        // backerground.alpha = 0.15;
 
         // Background
         background = game.add.tileSprite(0, 0, 4096, 288, "background");
@@ -67,12 +73,12 @@ var playState = {
 
         // Foreground
         // foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
-        // foreground.alpha = 0.15;
 
         game.renderer.renderSession.roundPixels = true;
     },
 
     update: function() {
+        // backerground.tilePosition.x = layerGround.position.x/4;
         background.tilePosition.x = layerGround.position.x/2;
         // foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);
@@ -90,7 +96,7 @@ var playState = {
 function collectUranium(sprite, ura) {
     uraniumCount++;
     if (uraniumCount < 10) {
-        gui[1].text = 'x0' + uraniumCount; 
+        gui[1].text = 'x0' + uraniumCount;
     } else {
         gui[1].text = 'x' + uraniumCount;
     }
