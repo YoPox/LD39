@@ -1,4 +1,5 @@
 var scrollSprite;
+var uranium;
 var justPressedSpace = false;
 var background;
 var rob;
@@ -12,7 +13,7 @@ var playState = {
     create: function() {
         // MUSIC PLAYBACK
         // var buffer = game.cache.getBinary('xm');
-        // ArtRemix.play(buffer);
+        // music.play(buffer);
 
         background = game.add.tileSprite(0, 0, 4096, 512, "background");
 
@@ -23,14 +24,14 @@ var playState = {
         map = game.add.tilemap('map1');
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
+        // Layers
         layerGround = map.createLayer('ground');
         game.physics.arcade.enable(layerGround);
         layerGround.resizeWorld();
-
-        layerItems = map.createLayer('item1');
         layerScenery = map.createLayer('scenery');
 
-        rob = game.add.sprite(64, 288 - 136, 'robot');
+        // Player
+        rob = game.add.sprite(-64, 288 - 136, 'robot');
         initSprite(rob, [0, 0]);
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
@@ -39,30 +40,36 @@ var playState = {
         rob.body.bounce.y = 0.1;
 
         // Invisible scroll sprite
-        scrollSprite = game.add.sprite(game.width / 2, game.height / 2);
+        scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
         scrollSprite.body.velocity.x = 80;
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
+
+        // Collectibles
+        uranium = game.add.group();
+        uranium.enableBody = true;
+        map.createFromObjects('uranium', 2, 'uranium', 0, true, false, uranium);
 
         game.renderer.renderSession.roundPixels = true;
     },
 
     update: function() {
         game.physics.arcade.collide(rob, layerGround);
+        game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
         recall();
         checkDeath();
     },
 
     render: function() {
-        // game.debug.body(rob);
+        // game.debug.body(scrollSprite);
     }
 };
 
-function collect1(sprite, tile) {
-    tile.alpha = 0;
-    console.log("test");
+function collectUranium(sprite, ura) {
+    // TODO: Compteur
+    ura.kill();
 }
 
 function input() {
