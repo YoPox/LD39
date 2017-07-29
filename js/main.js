@@ -15,6 +15,7 @@ var game = new Phaser.Game(config);
 // game.scale.setUserScale(2, 2);
 
 game.state.add("load", loadState);
+game.state.add("mainTitle", mainTitleState);
 game.state.add("play", playState);
 
 game.state.start("load");
