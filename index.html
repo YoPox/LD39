@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>LD39</title>
     <!-- LIB -->
-    <script type="text/javascript" src="node_modules/phaser/build/phaser.min.js"></script>
+    <script type="text/javascript" src="node_modules/phaser-ce/build/phaser.min.js"></script>
     <script type="text/javascript" src="js/lib/libopenmpt.js"></script>
     <script type="text/javascript" src="js/lib/chiptune2.js"></script>
     <!-- UTIL -->
@@ -25,6 +25,12 @@
             align-items: center;
             justify-content: center;
             background-color: #EEE;
+        }
+
+        canvas {
+            width: 1024px !important;
+            height: 576px !important;
+            image-rendering: pixelated;
         }
     </style>
 </head>

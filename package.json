@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/YoPox/LD39#readme",
   "dependencies": {
-    "phaser": "^2.6.2"
+    "phaser-ce": "^2.8.3"
   }
 }
