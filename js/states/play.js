@@ -1,17 +1,20 @@
-var rob;
 var scrollSprite;
 var justPressedSpace = false;
+var background;
+var rob;
 var map;
 var layerGround;
 var layerItems;
 var layerScenery;
-var eqPos;
+var eqPos; //equilibrium position of the character during the scroll
 
 var playState = {
     create: function() {
         // MUSIC PLAYBACK
         // var buffer = game.cache.getBinary('xm');
         // ArtRemix.play(buffer);
+
+        background = game.add.tileSprite(0, 0, 4096, 512, "background");
 
         game.stage.backgroundColor = "#181225";
         game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -23,7 +26,6 @@ var playState = {
         layerGround = map.createLayer('ground');
         game.physics.arcade.enable(layerGround);
         layerGround.resizeWorld();
-        // initLayer(layerGround);
 
         layerItems = map.createLayer('item1');
         layerScenery = map.createLayer('scenery');
@@ -33,16 +35,13 @@ var playState = {
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
         rob.body.velocity.x = 125;
-        // rob.body.gravity.x = 15;
         rob.body.gravity.y = 400;
         rob.body.bounce.y = 0.1;
-        // rob.body.collideWorldBounds = true;
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
         scrollSprite.body.velocity.x = 80;
-        // scrollSprite.body.gravity.x = 15;
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
 
@@ -96,7 +95,6 @@ function recall() {
 }
 
 function checkDeath() {
-    console.log(scrollSprite.x - rob.x);
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
         scrollSprite.body.velocity.x = 0;
     }
