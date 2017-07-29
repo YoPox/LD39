@@ -26,7 +26,5 @@ var loadState = {
 };
 
 function binaryLoadCallback(key, data) {
-
   return new Uint8Array(data);
-
 }
