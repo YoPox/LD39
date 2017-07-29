@@ -21,8 +21,7 @@ var playState = {
 
         // Background
         background = game.add.tileSprite(0, 0, 4096, 288, "background");
-        // game.physics.arcade.enable(background);
-        // background.body.velocity.x = 30;
+        background.alpha = 0.15;
 
         // Map init
         map = game.add.tilemap('map1');
@@ -57,12 +56,16 @@ var playState = {
         uranium.callAll('animations.add', 'animations', 'idle', [0, 2, 2, 0, 1, 0, 3, 3, 0, 1], 5, true);
         uranium.callAll('animations.play', 'animations', 'idle');
 
+        // Foreground
+        foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
+        // foreground.alpha = 0.15;
+
         game.renderer.renderSession.roundPixels = true;
     },
 
     update: function() {
-        // background.tilePosition.x -= 0.001*scrollSprite.body.velocity.x;
         background.tilePosition.x = layerGround.position.x/2;
+        foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
