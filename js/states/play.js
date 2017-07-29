@@ -1,5 +1,6 @@
 var rob;
 var scrollSprite;
+var uranium;
 var justPressedSpace = false;
 var map;
 var layerGround;
@@ -11,7 +12,7 @@ var playState = {
     create: function() {
         // MUSIC PLAYBACK
         // var buffer = game.cache.getBinary('xm');
-        // ArtRemix.play(buffer);
+        // music.play(buffer);
 
         game.stage.backgroundColor = "#181225";
         game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -20,50 +21,52 @@ var playState = {
         map = game.add.tilemap('map1');
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
+        // Layers
         layerGround = map.createLayer('ground');
         game.physics.arcade.enable(layerGround);
         layerGround.resizeWorld();
-        // initLayer(layerGround);
-
-        layerItems = map.createLayer('item1');
         layerScenery = map.createLayer('scenery');
 
-        rob = game.add.sprite(64, 288 - 136, 'robot');
+        // Player
+        rob = game.add.sprite(-64, 288 - 136, 'robot');
         initSprite(rob, [0, 0]);
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
         rob.body.velocity.x = 125;
-        // rob.body.gravity.x = 15;
         rob.body.gravity.y = 400;
         rob.body.bounce.y = 0.1;
-        // rob.body.collideWorldBounds = true;
 
         // Invisible scroll sprite
-        scrollSprite = game.add.sprite(game.width / 2, game.height / 2);
+        scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
         scrollSprite.body.velocity.x = 80;
-        // scrollSprite.body.gravity.x = 15;
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
+
+        // Collectibles
+        uranium = game.add.group();
+        uranium.enableBody = true;
+        map.createFromObjects('uranium', 2, 'uranium', 0, true, false, uranium);
 
         game.renderer.renderSession.roundPixels = true;
     },
 
     update: function() {
         game.physics.arcade.collide(rob, layerGround);
+        game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
         recall();
         checkDeath();
     },
 
     render: function() {
-        // game.debug.body(rob);
+        // game.debug.body(scrollSprite);
     }
 };
 
-function collect1(sprite, tile) {
-    tile.alpha = 0;
-    console.log("test");
+function collectUranium(sprite, ura) {
+    // TODO: Compteur
+    ura.kill();
 }
 
 function input() {
@@ -96,7 +99,6 @@ function recall() {
 }
 
 function checkDeath() {
-    console.log(scrollSprite.x - rob.x);
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
         scrollSprite.body.velocity.x = 0;
     }
