@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" nextobjectid="12">
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" nextobjectid="34">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="33" columns="33">
   <image source="../sprites/tileset.png" width="528" height="16"/>
  </tileset>
@@ -27,9 +27,19 @@
  </layer>
  <objectgroup name="uranium">
   <object id="3" gid="2" x="192" y="208" width="16" height="16"/>
-  <object id="4" gid="2" x="256" y="224" width="68.5" height="71.5"/>
-  <object id="5" gid="2" x="361" y="158.5" width="16" height="16"/>
+  <object id="5" gid="2" x="352" y="192" width="16" height="16"/>
   <object id="6" gid="2" x="401" y="161" width="16" height="16"/>
+  <object id="12" gid="2" x="528" y="128" width="16" height="16"/>
+  <object id="13" gid="2" x="576" y="112" width="16" height="16"/>
+  <object id="16" gid="2" x="640" y="240" width="16" height="16"/>
+  <object id="20" gid="2" x="816" y="208" width="16" height="16"/>
+  <object id="23" gid="2" x="1200" y="176" width="16" height="16"/>
+  <object id="24" gid="2" x="1248" y="160" width="16" height="16"/>
+  <object id="25" gid="2" x="1296" y="144" width="16" height="16"/>
+  <object id="26" gid="2" x="1520" y="128" width="16" height="16"/>
+  <object id="27" gid="2" x="1504" y="128" width="16" height="16"/>
+  <object id="32" gid="2" x="1088" y="176" width="16" height="16"/>
+  <object id="33" gid="2" x="1104" y="160" width="16" height="16"/>
  </objectgroup>
  <layer name="scenery" width="100" height="18">
   <data encoding="csv">
