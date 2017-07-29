@@ -16,6 +16,8 @@ var loadState = {
         // audio_sprint.volume = 0.45;
 
         spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+        rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
         sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
 
