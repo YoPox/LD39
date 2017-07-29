@@ -2,6 +2,8 @@ var scrollSprite;
 var uranium;
 var justPressedSpace = false;
 var background;
+var backerground;
+var foreground;
 var rob;
 var map;
 var layerGround;
@@ -18,6 +20,10 @@ var playState = {
 
         game.stage.backgroundColor = "#181225";
         game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        // Backerground
+        backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
+        backerground.alpha = 0.15;
 
         // Background
         background = game.add.tileSprite(0, 0, 4096, 288, "background");
@@ -64,6 +70,7 @@ var playState = {
     },
 
     update: function() {
+        backerground.tilePosition.x = layerGround.position.x/4;
         background.tilePosition.x = layerGround.position.x/2;
         foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);
