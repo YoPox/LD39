@@ -52,7 +52,8 @@ var playState = {
     update: function() {
         game.physics.arcade.collide(rob, layerGround);
         input();
-        rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos)*1.5
+        recall();
+        checkDeath();
     },
 
     render: function() {
@@ -87,5 +88,16 @@ function input() {
 function jump() {
     if (rob.body.blocked.down) {
         rob.body.velocity.y = -200;
+    }
+}
+
+function recall() {
+    rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos)*1.5;
+}
+
+function checkDeath() {
+    console.log(scrollSprite.x - rob.x);
+    if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
+        scrollSprite.body.velocity.x = 0;
     }
 }
