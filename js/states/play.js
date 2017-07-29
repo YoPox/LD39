@@ -39,8 +39,13 @@ var playState = {
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
         rob.body.velocity.x = 125;
+<<<<<<< HEAD
         rob.body.gravity.y = 800;
         rob.body.bounce.y = 0;
+=======
+        rob.body.gravity.y = 600;
+        rob.body.bounce.y = 0.1;
+>>>>>>> bc83117569acabbe51cc315fb2f3721c65368139
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
@@ -53,6 +58,9 @@ var playState = {
         uranium = game.add.group();
         uranium.enableBody = true;
         map.createFromObjects('uranium', 2, 'uranium', 0, true, false, uranium);
+
+        uranium.callAll('animations.add', 'animations', 'idle', [0, 2, 2, 0, 1, 0, 3, 3, 0, 1], 5, true);
+        uranium.callAll('animations.play', 'animations', 'idle');
 
         game.renderer.renderSession.roundPixels = true;
     },
