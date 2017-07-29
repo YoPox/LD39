@@ -21,6 +21,7 @@ var playState = {
         layerGround = map.createLayer('ground');
         game.physics.arcade.enable(layerGround);
         layerGround.resizeWorld();
+        // initLayer(layerGround);
 
         layerItems = map.createLayer('item1');
         layerScenery = map.createLayer('scenery');
@@ -30,7 +31,7 @@ var playState = {
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
         rob.body.velocity.x = 125;
-        rob.body.gravity.y = 200;
+        rob.body.gravity.y = 400;
         rob.body.bounce.y = 0.2;
         rob.body.collideWorldBounds = true;
         game.camera.follow(rob);
@@ -39,7 +40,9 @@ var playState = {
     },
 
     update: function() {
+        console.log(rob.body.blocked.down);
         game.physics.arcade.collide(rob, layerGround);
+        input();
     },
 
     render: function() {
@@ -50,4 +53,21 @@ var playState = {
 function collect1(sprite, tile) {
     tile.alpha = 0;
     console.log("test");
+}
+
+function input() {
+    if (spaceKey.isDown) {
+      if (!justPressedSpace) {
+        jump();
+        justPressedSpace = true;
+      }
+    } else {
+      justPressedSpace = false;
+    }
+}
+
+function jump() {
+    if (rob.body.blocked.down) {
+        rob.body.velocity.y = -200;
+    }
 }
