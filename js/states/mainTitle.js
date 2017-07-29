@@ -4,10 +4,8 @@ var mainTitleState = {
 
     game.stage.backgroundColor = "#0a0a26";
 
-    var title = game.add.sprite(512 / 2, 288 / 2, 'title_png');
+    var title = game.add.bitmapText(game.width / 2, game.height / 2, 'SullyVerge', 'Awesome Title', 16);
     initSprite(title, [0.5, 0.5]);
-    title.scale.x = 2;
-    title.scale.y = 2;
 
   },
 
