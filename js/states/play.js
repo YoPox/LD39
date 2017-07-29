@@ -8,6 +8,7 @@ var layerGround;
 var layerItems;
 var layerScenery;
 var eqPos; //equilibrium position of the character during the scroll
+var crouch = false;
 
 var playState = {
     create: function() {
@@ -34,7 +35,7 @@ var playState = {
         rob = game.add.sprite(-64, 288 - 136, 'robot');
         initSprite(rob, [0, 0]);
         game.physics.arcade.enable(rob);
-        rob.body.setSize(10, 32, 3, 32);
+        rob.body.setSize(10, 24, 3, 8);
         rob.body.velocity.x = 125;
         rob.body.gravity.y = 600;
         rob.body.bounce.y = 0.1;
@@ -50,7 +51,6 @@ var playState = {
         uranium = game.add.group();
         uranium.enableBody = true;
         map.createFromObjects('uranium', 2, 'uranium', 0, true, false, uranium);
-
         uranium.callAll('animations.add', 'animations', 'idle', [0, 2, 2, 0, 1, 0, 3, 3, 0, 1], 5, true);
         uranium.callAll('animations.play', 'animations', 'idle');
 
@@ -66,7 +66,7 @@ var playState = {
     },
 
     render: function() {
-        // game.debug.body(scrollSprite);
+        game.debug.body(rob);
     }
 };
 
@@ -91,6 +91,15 @@ function input() {
         eqPos = 60;
     } else {
         eqPos = 15;
+    }
+
+    if (downKey.isDown) {
+        crouch = true;
+        rob.frame = 1;
+        rob.body.setSize(10, 16, 3, 16);
+    } else if (crouch && !rob.body.blocked.up) {
+        rob.frame = 0;
+        rob.body.setSize(10, 24, 3, 8);
     }
 }
 
