@@ -2,7 +2,7 @@ var loadState = {
 
     preload: function() {
 
-        game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 64);
+        game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
         game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
         game.load.tilemap('map1', '../../assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', '../../assets/sprites/tileset.png');
@@ -21,6 +21,7 @@ var loadState = {
         spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+        downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
         sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
 
