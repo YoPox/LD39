@@ -31,12 +31,33 @@ function jump() {
     }
 }
 
-function recall() {
-    rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos)*1.5;
-}
-
 function checkDeath() {
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
         scrollSprite.body.velocity.x = 0;
     }
+}
+
+function crouch() {
+    if (downKey.isDown) {
+        isCrouching = true;
+        rob.frame = 1;
+        rob.body.setSize(10, 16, 3, 16);
+    } else if (isCrouching && !rob.body.blocked.up) {
+        rob.frame = 0;
+        rob.body.setSize(10, 24, 3, 8);
+    }
+}
+
+function move() {
+    if (rightKey.isDown) {
+        eqPos = 0;
+    } else if (leftKey.isDown) {
+        eqPos = 90;
+    } else {
+        eqPos = 45;
+    }
+}
+
+function recall() {
+    rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos)*1.5;
 }

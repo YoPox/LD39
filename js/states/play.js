@@ -8,7 +8,7 @@ var layerGround;
 var layerItems;
 var layerScenery;
 var eqPos; //equilibrium position of the character during the scroll
-var crouch = false;
+var isCrouching = false;
 
 var playState = {
     create: function() {
@@ -81,21 +81,6 @@ function collectUranium(sprite, ura) {
 
 function input() {
     jump();
-
-    if (rightKey.isDown) {
-        eqPos = -30;
-    } else if (leftKey.isDown) {
-        eqPos = 60;
-    } else {
-        eqPos = 15;
-    }
-
-    if (downKey.isDown) {
-        crouch = true;
-        rob.frame = 1;
-        rob.body.setSize(10, 16, 3, 16);
-    } else if (crouch && !rob.body.blocked.up) {
-        rob.frame = 0;
-        rob.body.setSize(10, 24, 3, 8);
-    }
+    crouch();
+    move();
 }
