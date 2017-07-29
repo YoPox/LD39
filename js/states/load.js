@@ -4,7 +4,7 @@ var loadState = {
 
     // game.load.image("logo", "assets/logo.png");
     game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 64);
-    game.load.tilemap('map1', '../../assets/maps/map.csv', null, Phaser.Tilemap.CSV);
+    game.load.tilemap('map1', '../../assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', '../../assets/sprites/tileset.png');
     // game.load.binary('xm', '../../assets/le_voleur_de_gouter.xm', binaryLoadCallback, this);
     // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');

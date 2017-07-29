@@ -10,18 +10,23 @@ var playState = {
     // ArtRemix.play(buffer);
 
     game.stage.backgroundColor = "#EEEEEE";
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
     map = game.add.tilemap('map1', 16, 16);
     map.addTilesetImage('tiles');
     layer = map.createLayer(0);
-    layer.resizeWorld();
-    layer.smoothed = false;
-    layer.scale.x = 2;
-    layer.scale.y = 2;
+    initLayer(layer);
+    layerItems = map.createLayer(1);
+    initLayer(layerItems);
 
     rob = game.add.sprite(64, 576 - 128, 'robot');
     rob.animations.add('up', [0, 1, 2, 3, 4]);
     initSprite(rob, [0, 1], [4, 4]);
+    game.physics.arcade.enable(rob);
+    rob.body.velocity.x = 250;
+    game.camera.follow(rob);
+
+    game.renderer.renderSession.roundPixels = true;
 
   },
 

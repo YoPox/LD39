@@ -7,3 +7,10 @@ function initSprite(sprite, anchor, scale) {
   sprite.scale.x = scale[0];
   sprite.scale.y = scale[1];
 }
+
+function initLayer(layer) {
+  layer.smoothed = false;
+  layer.scale.x = 2;
+  layer.scale.y = 2;
+  layer.resizeWorld();
+}
