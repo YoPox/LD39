@@ -40,13 +40,8 @@ var playState = {
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 24, 3, 8);
         rob.body.velocity.x = 125;
-<<<<<<< HEAD
         rob.body.gravity.y = 800;
         rob.body.bounce.y = 0;
-=======
-        rob.body.gravity.y = 600;
-        rob.body.bounce.y = 0.1;
->>>>>>> bc83117569acabbe51cc315fb2f3721c65368139
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
