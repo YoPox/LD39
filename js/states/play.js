@@ -1,4 +1,5 @@
 var rob;
+var scrollSprite;
 var justPressedSpace = false;
 var map;
 var layerGround;
@@ -33,7 +34,13 @@ var playState = {
         rob.body.gravity.y = 200;
         rob.body.bounce.y = 0.2;
         rob.body.collideWorldBounds = true;
-        game.camera.follow(rob);
+
+        // Invisible scroll sprite
+        scrollSprite = game.add.sprite(game.width / 2, game.height / 2);
+        game.physics.arcade.enable(scrollSprite);
+        scrollSprite.body.velocity.x = 125;
+        scrollSprite.body.collideWorldBounds = true;
+        game.camera.follow(scrollSprite);
 
         game.renderer.renderSession.roundPixels = true;
     },
@@ -43,7 +50,7 @@ var playState = {
     },
 
     render: function() {
-        game.debug.body(rob);
+        // game.debug.body(rob);
     }
 };
 
