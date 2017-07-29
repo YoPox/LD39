@@ -5,6 +5,7 @@ var map;
 var layerGround;
 var layerItems;
 var layerScenery;
+var eqPos;
 
 var playState = {
     create: function() {
@@ -32,16 +33,16 @@ var playState = {
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 32, 3, 32);
         rob.body.velocity.x = 125;
-        rob.body.gravity.x = 15;
+        // rob.body.gravity.x = 15;
         rob.body.gravity.y = 400;
         rob.body.bounce.y = 0.1;
-        rob.body.collideWorldBounds = true;
+        // rob.body.collideWorldBounds = true;
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
         scrollSprite.body.velocity.x = 80;
-        scrollSprite.body.gravity.x = 15;
+        // scrollSprite.body.gravity.x = 15;
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
 
@@ -51,7 +52,7 @@ var playState = {
     update: function() {
         game.physics.arcade.collide(rob, layerGround);
         input();
-        rob.body.velocity.x = (scrollSprite.x - rob.x - 15)
+        rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos)*1.5
     },
 
     render: function() {
@@ -75,10 +76,11 @@ function input() {
     }
 
     if (rightKey.isDown) {
-        rob.body.gravity.x += 20;
-    }
-    if (leftKey.isDown) {
-        rob.body.gravity.x -= 20;
+        eqPos = -30;
+    } else if (leftKey.isDown) {
+        eqPos = 60;
+    } else {
+        eqPos = 15;
     }
 }
 
