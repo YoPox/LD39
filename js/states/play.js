@@ -3,15 +3,15 @@ var justPressedSpace = false;
 var map;
 var layerGround;
 var layerItems;
+var layerScenery;
 
 var playState = {
     create: function() {
-
         // MUSIC PLAYBACK
         // var buffer = game.cache.getBinary('xm');
         // ArtRemix.play(buffer);
 
-        game.stage.backgroundColor = "#EEEEEE";
+        game.stage.backgroundColor = "#181225";
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // Map init
@@ -23,9 +23,8 @@ var playState = {
         layerGround.resizeWorld();
         // initLayer(layerGround);
 
-
-        // layerItems = map.createLayer('item1');
-        // initLayer(layerItems);
+        layerItems = map.createLayer('item1');
+        layerScenery = map.createLayer('scenery');
 
         rob = game.add.sprite(64, 288 - 136, 'robot');
         initSprite(rob, [0, 0]);
@@ -38,19 +37,15 @@ var playState = {
         game.camera.follow(rob);
 
         game.renderer.renderSession.roundPixels = true;
-
     },
 
     update: function() {
-
         game.physics.arcade.collide(rob, layerGround);
-
     },
 
     render: function() {
         game.debug.body(rob);
     }
-
 };
 
 function collect1(sprite, tile) {
