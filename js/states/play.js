@@ -21,7 +21,6 @@ var playState = {
         layerGround = map.createLayer('ground');
         game.physics.arcade.enable(layerGround);
         layerGround.resizeWorld();
-        // initLayer(layerGround);
 
         layerItems = map.createLayer('item1');
         layerScenery = map.createLayer('scenery');
