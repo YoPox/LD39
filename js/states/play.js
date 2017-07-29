@@ -9,7 +9,7 @@ var gui = [];
 var layerGround;
 var layerItems;
 var layerScenery;
-var eqPos; //equilibrium position of the character during the scroll
+var eqPos; // equilibrium position of the character during the scroll
 var isCrouching = false;
 
 var playState = {
@@ -26,7 +26,7 @@ var playState = {
         background.alpha = 0.15;
 
         // Map init
-        map = game.add.tilemap('map1');
+        map = game.add.tilemap('map' + levelSelector);
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
         // Layers
@@ -66,7 +66,7 @@ var playState = {
         gui[1].fixedToCamera = true;
 
         // Foreground
-        foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
+        // foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
         // foreground.alpha = 0.15;
 
         game.renderer.renderSession.roundPixels = true;
@@ -74,7 +74,7 @@ var playState = {
 
     update: function() {
         background.tilePosition.x = layerGround.position.x/2;
-        foreground.tilePosition.x = layerGround.position.x*1.5;
+        // foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();

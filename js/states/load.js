@@ -24,6 +24,7 @@ var loadState = {
         spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+        upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
         sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);

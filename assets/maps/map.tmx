@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" nextobjectid="34">
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" nextobjectid="43">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="33" columns="33">
   <image source="../sprites/tileset.png" width="528" height="16"/>
  </tileset>
@@ -36,10 +36,15 @@
   <object id="23" gid="2" x="1200" y="176" width="16" height="16"/>
   <object id="24" gid="2" x="1248" y="160" width="16" height="16"/>
   <object id="25" gid="2" x="1296" y="144" width="16" height="16"/>
-  <object id="26" gid="2" x="1520" y="128" width="16" height="16"/>
   <object id="27" gid="2" x="1504" y="128" width="16" height="16"/>
   <object id="32" gid="2" x="1088" y="176" width="16" height="16"/>
   <object id="33" gid="2" x="1104" y="160" width="16" height="16"/>
+  <object id="34" gid="2" x="144" y="224" width="16" height="16"/>
+  <object id="35" gid="2" x="736" y="224" width="16" height="16"/>
+  <object id="36" gid="2" x="864" y="176" width="16" height="16"/>
+  <object id="38" gid="2" x="912" y="176" width="16" height="16"/>
+  <object id="40" gid="2" x="1008" y="208" width="16" height="16"/>
+  <object id="41" gid="2" x="1552" y="144" width="16" height="16"/>
  </objectgroup>
  <layer name="scenery" width="100" height="18">
   <data encoding="csv">
