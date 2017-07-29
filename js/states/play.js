@@ -1,11 +1,13 @@
 var scrollSprite;
 var uranium;
+var uraniumCount;
 var justPressedSpace = false;
 var background;
 var backerground;
 var foreground;
 var rob;
 var map;
+var gui = [];
 var layerGround;
 var layerItems;
 var layerScenery;
@@ -59,8 +61,15 @@ var playState = {
         uranium = game.add.group();
         uranium.enableBody = true;
         map.createFromObjects('uranium', 2, 'uranium', 0, true, false, uranium);
-        uranium.callAll('animations.add', 'animations', 'idle', [0, 2, 2, 0, 1, 0, 3, 3, 0, 1], 5, true);
+        uranium.callAll('animations.add', 'animations', 'idle', [0, 1, 0, 2], 4, true);
         uranium.callAll('animations.play', 'animations', 'idle');
+        uraniumCount = 0;
+
+        // GUI
+        gui.push(game.add.sprite(32, 16, 'counter'));
+        gui[0].fixedToCamera = true;
+        gui.push(game.add.bitmapText(68, 32, 'SullyVerge', 'x00', 16));
+        gui[1].fixedToCamera = true;
 
         // Foreground
         foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
@@ -81,12 +90,17 @@ var playState = {
     },
 
     render: function() {
-        game.debug.body(rob);
+        // game.debug.body(rob);
     }
 };
 
 function collectUranium(sprite, ura) {
-    // TODO: Compteur
+    uraniumCount++;
+    if (uraniumCount < 10) {
+        gui[1].text = 'x0' + uraniumCount; 
+    } else {
+        gui[1].text = 'x' + uraniumCount;
+    }
     ura.kill();
 }
 
