@@ -54,6 +54,7 @@ var playState = {
         scrollSprite.body.velocity.x = 80;
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
+        game.camera.roundPx = false;
 
         // Collectibles
         uranium = game.add.group();
