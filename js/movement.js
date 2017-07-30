@@ -1,13 +1,12 @@
-
 function jump() {
     //initialize the static variables
-    if ( typeof jump.canJump == 'undefined' ) {
+    if (typeof jump.canJump == 'undefined') {
         jump.canJump = true;
     }
-    if ( typeof jump.justJumped == 'undefined' ) {
+    if (typeof jump.justJumped == 'undefined') {
         jump.justJumped = false;
     }
-    if ( typeof jump.isJumping == 'undefined' ) {
+    if (typeof jump.isJumping == 'undefined') {
         jump.isJumping = false;
     }
 
@@ -17,9 +16,9 @@ function jump() {
     } else {
         if (jump.justJumped) {
             jump.justJumped = false;
-            setTimeout(function () {
+            setTimeout(function() {
                 jump.canJump = false;
-            }, isCrouching?50:220);
+            }, isCrouching ? 50 : 220);
         }
     }
     if (jump.canJump && spaceKey.isDown) {
@@ -32,16 +31,16 @@ function jump() {
 }
 
 function checkDeath() {
-    if ( typeof checkDeath.dead == 'undefined' ) {
+    if (typeof checkDeath.dead == 'undefined') {
         checkDeath.dead = false; // used to prevent the timeout function from being called every frame for a few seconds...
     }
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
         if (!checkDeath.dead) {
             checkDeath.dead = true;
             scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
-            setTimeout(function () {
+            setTimeout(function() {
+                cleanTitle();
                 game.state.start("menu");
-                clean();
             }, 1000);
         }
     } else {
@@ -72,5 +71,5 @@ function move() {
 }
 
 function recall() {
-    rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos)*1.5;
+    rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos) * 1.5;
 }
