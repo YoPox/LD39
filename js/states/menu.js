@@ -17,7 +17,8 @@ var menuState = {
         }
         if (upKey.isDown && !keyDown) {
             keyDown = true;
-            levelSelector++;
+            if (levelSelector < 3)
+                levelSelector++;
             titleText.text = "Load level " + levelSelector;
         }
 

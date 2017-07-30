@@ -11,6 +11,8 @@ var titleState = {
 
         game.stage.backgroundColor = "#181225";
 
+        backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
+
         // Map init
         map = game.add.tilemap('titleMap');
         map.addTilesetImage('tiles');
@@ -32,11 +34,14 @@ var titleState = {
         rob.body.bounce.y = 0;
         rob.animations.play('walk', 14);
 
+        // Text
         titleText.push(game.add.bitmapText(game.width / 2, game.height / 4, 'SullyVerge', 'Energy Runner', 64));
         initSprite(titleText[0], [0.5, 0.5]);
-        titleText.push(game.add.bitmapText(game.width / 2, game.height / 2, 'SullyVerge', 'Press SPACE to start', 16));
+        titleText.push(game.add.bitmapText(game.width / 2, game.height / 2 + 16, 'SullyVerge', 'Press SPACE to start', 16));
         initSprite(titleText[1], [0.5, 0.5]);
 
+        // Rob animation
+        // Crouch
         titleInterval1 = setInterval(function() {
             rob.animations.play('walk');
             var randnb = Math.random();
@@ -44,7 +49,7 @@ var titleState = {
                 rob.animations.play('crouch');
             }
         }, 1500);
-
+        // Jump
         titleInterval2 = setInterval(function() {
             var randnb = Math.random();
             if (randnb < 0.3 && !titleJump) {
@@ -75,9 +80,6 @@ var titleState = {
             rob.scale.x = 1;
         }
 
-        if (spaceKey.isDown) {
-            game.state.start("menu");
-        }
     }
 }
 
