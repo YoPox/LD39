@@ -10,7 +10,6 @@ var rob;
 var map;
 var gui = [];
 var layerGround;
-var layerItems;
 var layerScenery;
 var eqPos; // equilibrium position of the character during the scroll
 var isCrouching = false;
