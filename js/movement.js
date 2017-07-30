@@ -19,7 +19,7 @@ function jump() {
             jump.justJumped = false;
             setTimeout(function () {
                 jump.canJump = false;
-            }, 220);
+            }, isCrouching?50:220);
         }
     }
     if (jump.canJump && spaceKey.isDown) {
@@ -43,6 +43,7 @@ function crouch() {
         rob.frame = 1;
         rob.body.setSize(10, 14, 3, 18); //14 instead of 16 to be able to fit on 1 square high passages in a wall while falling
     } else if (isCrouching && !rob.body.blocked.up) {
+        isCrouching = false;
         rob.frame = 0;
         rob.body.setSize(10, 24, 3, 8);
     }
@@ -50,11 +51,11 @@ function crouch() {
 
 function move() {
     if (rightKey.isDown) {
-        eqPos = 0;
+        eqPos = 0 + isCrouching*30;
     } else if (leftKey.isDown) {
-        eqPos = 90;
+        eqPos = 90 + isCrouching*30;
     } else {
-        eqPos = 45;
+        eqPos = 45 + isCrouching*30;
     }
 }
 
