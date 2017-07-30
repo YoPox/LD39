@@ -40,7 +40,7 @@ function checkDeath() {
             checkDeath.dead = true;
             scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
             setTimeout(function () {
-                game.state.start("mainTitle");
+                game.state.start("menu");
                 clean();
             }, 1000);
         }

@@ -117,7 +117,7 @@ function checkEnd() {
             checkEnd.ended = true;
             setTimeout(function() {
                 cleanPlay();
-                game.state.start("title");
+                game.state.start("menu");
             }, 4000);
         }
     } else {
