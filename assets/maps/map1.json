@@ -204,7 +204,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":864,
+                 "x":928,
                  "y":176
                 }, 
                 {
@@ -228,8 +228,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":1008,
-                 "y":208
+                 "x":1024,
+                 "y":192
                 }, 
                 {
                  "gid":2,
@@ -240,8 +240,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":1552,
-                 "y":144
+                 "x":1520,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",

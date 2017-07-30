@@ -1,10 +1,11 @@
 var scrollSprite;
 var uranium;
+var steam;
 var uraniumCount;
 var justPressedSpace = false;
 var background;
-// var backerground;
-var foreground;
+var backerground;
+// var foreground;
 var rob;
 var map;
 var gui = [];
@@ -63,6 +64,13 @@ var playState = {
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
 
+        // Steam
+        steam = game.add.group();
+        steam.enableBody = true;
+        map.createFromObjects('steam', 34, 'steam', 0, true, false, steam);
+        steam.callAll('animations.add', 'animations', 'idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], 9, true);
+        steam.callAll('animations.play', 'animations', 'idle');
+
         // GUI
         gui.push(game.add.sprite(32, 16, 'counter'));
         gui[0].fixedToCamera = true;
@@ -70,7 +78,7 @@ var playState = {
         gui[1].fixedToCamera = true;
 
         // Foreground
-        foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
+        // foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
 
         game.renderer.renderSession.roundPixels = true;
     },
@@ -78,7 +86,7 @@ var playState = {
     update: function() {
         backerground.tilePosition.x = layerGround.position.x/1.1;
         background.tilePosition.x = layerGround.position.x/2;
-        foreground.tilePosition.x = layerGround.position.x*1.5;
+        // foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
