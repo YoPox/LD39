@@ -1,9 +1,10 @@
 var scrollSprite;
 var uranium;
+var steam;
 var uraniumCount;
 var justPressedSpace = false;
 var background;
-// var backerground;
+var backerground;
 // var foreground;
 var rob;
 var map;
@@ -63,6 +64,13 @@ var playState = {
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
 
+        // Steam
+        steam = game.add.group();
+        steam.enableBody = true;
+        map.createFromObjects('steam', 34, 'steam', 0, true, false, steam);
+        steam.callAll('animations.add', 'animations', 'idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], 9, true);
+        steam.callAll('animations.play', 'animations', 'idle');
+
         // GUI
         gui.push(game.add.sprite(32, 16, 'counter'));
         gui[0].fixedToCamera = true;
@@ -84,6 +92,7 @@ var playState = {
         input();
         recall();
         checkDeath();
+        checkEnd();
     },
 
     render: function() {
@@ -105,4 +114,25 @@ function input() {
     jump();
     crouch();
     move();
+}
+
+function clean() { //function to cleanup when dying
+    gui = [];
+}
+
+function checkEnd() {
+    if ( typeof checkEnd.ended == 'undefined' ) {
+        checkEnd.ended = false;  // used to prevent the timeout function from being called every frame for a few seconds...
+    }
+    if (scrollSprite.body.velocity.x == 0) {
+        if (!checkEnd.ended) {
+            checkEnd.ended = true;
+            setTimeout(function () {
+                game.state.start("mainTitle");
+                clean();
+            }, 4000);
+        }
+    } else {
+        checkEnd.ended = false;
+    }
 }

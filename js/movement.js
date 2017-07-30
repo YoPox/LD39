@@ -19,7 +19,7 @@ function jump() {
             jump.justJumped = false;
             setTimeout(function () {
                 jump.canJump = false;
-            }, 220);
+            }, isCrouching?50:220);
         }
     }
     if (jump.canJump && spaceKey.isDown) {
@@ -32,8 +32,20 @@ function jump() {
 }
 
 function checkDeath() {
+    if ( typeof checkDeath.dead == 'undefined' ) {
+        checkDeath.dead = false; // used to prevent the timeout function from being called every frame for a few seconds...
+    }
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
-        scrollSprite.body.velocity.x = 0;
+        if (!checkDeath.dead) {
+            checkDeath.dead = true;
+            scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
+            setTimeout(function () {
+                game.state.start("mainTitle");
+                clean();
+            }, 1000);
+        }
+    } else {
+        checkDeath.dead = false;
     }
 }
 
@@ -41,8 +53,9 @@ function crouch() {
     if (downKey.isDown) {
         isCrouching = true;
         rob.frame = 1;
-        rob.body.setSize(10, 16, 3, 16);
+        rob.body.setSize(10, 14, 3, 18); //14 instead of 16 to be able to fit on 1 square high passages in a wall while falling
     } else if (isCrouching && !rob.body.blocked.up) {
+        isCrouching = false;
         rob.frame = 0;
         rob.body.setSize(10, 24, 3, 8);
     }
@@ -50,11 +63,11 @@ function crouch() {
 
 function move() {
     if (rightKey.isDown) {
-        eqPos = 0;
+        eqPos = 0 + isCrouching*30;
     } else if (leftKey.isDown) {
-        eqPos = 90;
+        eqPos = 90 + isCrouching*30;
     } else {
-        eqPos = 45;
+        eqPos = 45 + isCrouching*30;
     }
 }
 
