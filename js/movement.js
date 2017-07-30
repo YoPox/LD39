@@ -52,11 +52,11 @@ function checkDeath() {
 function crouch() {
     if (downKey.isDown) {
         isCrouching = true;
-        rob.frame = 1;
+        rob.animations.play('crouch');
         rob.body.setSize(10, 14, 3, 18); //14 instead of 16 to be able to fit on 1 square high passages in a wall while falling
     } else if (isCrouching && !rob.body.blocked.up) {
         isCrouching = false;
-        rob.frame = 0;
+        rob.animations.play('walk');
         rob.body.setSize(10, 24, 3, 8);
     }
 }

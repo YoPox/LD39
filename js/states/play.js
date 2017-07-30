@@ -42,7 +42,10 @@ var playState = {
 
         // Player
         rob = game.add.sprite(-64, 288 - 136, 'robot');
+        rob.animations.add('walk', [0,1,2,3,4,5,6,7], 16, true);
+        rob.animations.add('crouch', [8,9,10,11,12,13], 14, true);
         initSprite(rob, [0, 0]);
+        rob.animations.play('walk');
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 24, 3, 8);
         rob.body.velocity.x = 125;
