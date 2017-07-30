@@ -20,9 +20,6 @@ var playState = {
         // var buffer = game.cache.getBinary('xm');
         // music.play(buffer);
 
-        game.stage.backgroundColor = "#181225";
-        game.physics.startSystem(Phaser.Physics.ARCADE);
-
         // Backerground
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
 
@@ -86,9 +83,8 @@ var playState = {
     },
 
     update: function() {
-        backerground.tilePosition.x = layerGround.position.x/1.1;
-        background.tilePosition.x = layerGround.position.x/2;
-        // foreground.tilePosition.x = layerGround.position.x*1.5;
+        backerground.tilePosition.x = layerGround.position.x / 1.1;
+        background.tilePosition.x = layerGround.position.x / 2;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();
@@ -102,36 +98,26 @@ var playState = {
     }
 };
 
-function collectUranium(sprite, ura) {
-    uraniumCount++;
-    if (uraniumCount < 10) {
-        gui[1].text = 'x0' + uraniumCount;
-    } else {
-        gui[1].text = 'x' + uraniumCount;
-    }
-    ura.kill();
-}
-
 function input() {
     jump();
     crouch();
     move();
 }
 
-function clean() { //function to cleanup when dying
+function cleanPlay() {
     gui = [];
 }
 
 function checkEnd() {
-    if ( typeof checkEnd.ended == 'undefined' ) {
-        checkEnd.ended = false;  // used to prevent the timeout function from being called every frame for a few seconds...
+    if (typeof checkEnd.ended == 'undefined') {
+        checkEnd.ended = false; // used to prevent the timeout function from being called every frame for a few seconds...
     }
     if (scrollSprite.body.velocity.x == 0) {
         if (!checkEnd.ended) {
             checkEnd.ended = true;
-            setTimeout(function () {
-                game.state.start("mainTitle");
-                clean();
+            setTimeout(function() {
+                cleanPlay();
+                game.state.start("title");
             }, 4000);
         }
     } else {

@@ -13,7 +13,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 game.state.add("load", loadState);
-game.state.add("mainTitle", mainTitleState);
+game.state.add("title", titleState);
 game.state.add("play", playState);
 
 game.state.start("load");
