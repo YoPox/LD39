@@ -63,11 +63,11 @@ function crouch() {
 
 function move() {
     if (rightKey.isDown) {
-        eqPos = 0 + isCrouching*30;
+        eqPos = 0;
     } else if (leftKey.isDown) {
-        eqPos = 90 + isCrouching*30;
+        eqPos = 90;
     } else {
-        eqPos = 45 + isCrouching*30;
+        eqPos = 45;
     }
 }
 
