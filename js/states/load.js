@@ -7,6 +7,7 @@ var loadState = {
         game.load.spritesheet("steam", "../../assets/sprites/steam.png", 16, 32);
         game.load.tilemap('map1', '../../assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map2', '../../assets/maps/map2.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map3', '../../assets/maps/map3.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', '../../assets/sprites/tileset.png');
         game.load.image('background', '../../assets/sprites/background.png');
         game.load.image('backerground', '../../assets/sprites/backerground.png');
@@ -29,8 +30,6 @@ var loadState = {
         rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
         upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
-        sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
-        aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
 
         game.state.start("mainTitle");
 
