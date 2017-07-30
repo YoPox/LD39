@@ -4,6 +4,7 @@ var keyDown = false;
 var helpText;
 var iconsNumbers = [];
 var iconsCircles = [];
+var levelNames = ["Niveau 1", "Niveau 2", "Niveau 3"];
 
 var menuState = {
 
@@ -11,8 +12,11 @@ var menuState = {
 
     game.stage.backgroundColor = "#0a0a26";
 
-    helpText = game.add.bitmapText(game.width / 2, game.height / 3 * 2, 'SullyVerge', 'press [SPACE] to select', 16);
-    initSprite(helpText, [0.5, 0.5]);
+    helpText = game.add.bitmapText(game.width - 10, game.height / 3 * 2, 'SullyVerge', 'Press [SPACE] to select\nUse right/left keys to move', 16);
+    initSprite(helpText, [1, 0]);
+
+    levelNameText = game.add.bitmapText(10, game.height / 3 * 2, 'SullyVerge', levelNames[levelSelector - 1])
+    initSprite(levelNameText, [0, 0])
 
     iconsNumbers = [];
     iconsCircles = [];
@@ -26,8 +30,6 @@ var menuState = {
       initSprite(cirIco, [0.5, 0.5])
       iconsCircles.push(cirIco);
     }
-
-  console.log(levelSelector);
 
   iconsCircles[levelSelector -1].frame = 1;
 
@@ -43,6 +45,7 @@ var menuState = {
         iconsCircles[levelSelector-1].frame = 0;
         levelSelector++;
         iconsCircles[levelSelector-1].frame = 1;
+        levelNameText.text = levelNames[levelSelector - 1];
       }
     }
     if (leftKey.isDown && !keyDown){
@@ -51,6 +54,7 @@ var menuState = {
         iconsCircles[levelSelector-1].frame = 0;
         levelSelector--;
         iconsCircles[levelSelector-1].frame = 1;
+        levelNameText.text = levelNames[levelSelector - 1];
       }
     }
     if (!leftKey.isDown && !rightKey.isDown && keyDown) {
