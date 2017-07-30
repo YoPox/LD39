@@ -9,6 +9,8 @@ var titleState = {
     create: function() {
 
         game.stage.backgroundColor = "#181225";
+        var buffer = game.cache.getBinary('title');
+        // music.play(buffer);
 
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
 
@@ -21,6 +23,13 @@ var titleState = {
         game.physics.arcade.enable(layerGround);
         layerGround.resizeWorld();
         layerScenery = map.createLayer('scenery');
+
+        // Steam
+        steam = game.add.group();
+        steam.enableBody = true;
+        map.createFromObjects('steam', 34, 'steam', 0, true, false, steam);
+        steam.callAll('animations.add', 'animations', 'idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], 9, true);
+        steam.callAll('animations.play', 'animations', 'idle');
 
         // Player
         rob = game.add.sprite(32, 288 - 96, 'robot');
