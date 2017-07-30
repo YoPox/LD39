@@ -17,14 +17,11 @@ var loadState = {
         game.load.image('tiles', '../../assets/sprites/tileset.png');
         game.load.image('background', '../../assets/sprites/background.png');
         game.load.image('backerground', '../../assets/sprites/backerground.png');
-        // game.load.image('foreground', '../../assets/sprites/foreground.png');
         game.load.binary('title', '../../assets/music/title.xm', binaryLoadCallback, this);
-        game.load.image('title_png', '../../assets/sprites/titreMain.png');
-        game.load.image('button_start_png', '../../assets/sprites/start_button.png');
         game.load.image('counter', '../../assets/sprites/counter.png');
         game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
         game.load.image("menuBackground", '../../assets/sprites/island.png');
-            // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
+        // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
     },
 
     create: function() {
