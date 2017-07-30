@@ -92,6 +92,7 @@ var playState = {
         input();
         recall();
         checkDeath();
+        checkEnd();
     },
 
     render: function() {
@@ -113,4 +114,25 @@ function input() {
     jump();
     crouch();
     move();
+}
+
+function clean() { //function to cleanup when dying
+    gui = [];
+}
+
+function checkEnd() {
+    if ( typeof checkEnd.ended == 'undefined' ) {
+        checkEnd.ended = false;  // used to prevent the timeout function from being called every frame for a few seconds...
+    }
+    if (scrollSprite.body.velocity.x == 0) {
+        if (!checkEnd.ended) {
+            checkEnd.ended = true;
+            setTimeout(function () {
+                game.state.start("mainTitle");
+                clean();
+            }, 4000);
+        }
+    } else {
+        checkEnd.ended = false;
+    }
 }

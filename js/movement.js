@@ -32,8 +32,20 @@ function jump() {
 }
 
 function checkDeath() {
+    if ( typeof checkDeath.dead == 'undefined' ) {
+        checkDeath.dead = false; // used to prevent the timeout function from being called every frame for a few seconds...
+    }
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
-        scrollSprite.body.velocity.x = 0;
+        if (!checkDeath.dead) {
+            checkDeath.dead = true;
+            scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
+            setTimeout(function () {
+                game.state.start("mainTitle");
+                clean();
+            }, 1000);
+        }
+    } else {
+        checkDeath.dead = false;
     }
 }
 
