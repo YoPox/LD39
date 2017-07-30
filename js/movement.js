@@ -39,12 +39,29 @@ function checkDeath() {
             checkDeath.dead = true;
             scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
             setTimeout(function() {
-                cleanTitle();
+                cleanPlay();
                 game.state.start("menu");
             }, 1000);
         }
     } else {
         checkDeath.dead = false;
+    }
+}
+
+function checkEnd() {
+    if (typeof checkEnd.ended == 'undefined') {
+        checkEnd.ended = false; // used to prevent the timeout function from being called every frame for a few seconds...
+    }
+    if (scrollSprite.body.velocity.x == 0) {
+        if (!checkEnd.ended) {
+            checkEnd.ended = true;
+            setTimeout(function() {
+                cleanPlay();
+                game.state.start("menu");
+            }, 4000);
+        }
+    } else {
+        checkEnd.ended = false;
     }
 }
 

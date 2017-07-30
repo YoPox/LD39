@@ -107,20 +107,3 @@ function input() {
 function cleanPlay() {
     gui = [];
 }
-
-function checkEnd() {
-    if (typeof checkEnd.ended == 'undefined') {
-        checkEnd.ended = false; // used to prevent the timeout function from being called every frame for a few seconds...
-    }
-    if (scrollSprite.body.velocity.x == 0) {
-        if (!checkEnd.ended) {
-            checkEnd.ended = true;
-            setTimeout(function() {
-                cleanPlay();
-                game.state.start("menu");
-            }, 4000);
-        }
-    } else {
-        checkEnd.ended = false;
-    }
-}
