@@ -11,7 +11,7 @@ var gui = [];
 var layerGround;
 var layerItems;
 var layerScenery;
-var eqPos; //equilibrium position of the character during the scroll
+var eqPos; // equilibrium position of the character during the scroll
 var isCrouching = false;
 
 var playState = {
@@ -24,15 +24,13 @@ var playState = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // Backerground
-        // backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
-        // backerground.alpha = 0.15;
+        backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
 
         // Background
         background = game.add.tileSprite(0, 0, 4096, 288, "background");
-        background.alpha = 0.15;
 
         // Map init
-        map = game.add.tilemap('map2');
+        map = game.add.tilemap('map' + levelSelector);
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
         // Layers
@@ -78,7 +76,7 @@ var playState = {
     },
 
     update: function() {
-        // backerground.tilePosition.x = layerGround.position.x/4;
+        backerground.tilePosition.x = layerGround.position.x/1.1;
         background.tilePosition.x = layerGround.position.x/2;
         foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);

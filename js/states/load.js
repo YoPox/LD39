@@ -8,8 +8,8 @@ var loadState = {
         game.load.tilemap('map2', '../../assets/maps/map2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', '../../assets/sprites/tileset.png');
         game.load.image('background', '../../assets/sprites/background.png');
-        // game.load.image('backerground', '../../assets/sprites/backerground.png');
-        game.load.image('foreground', '../../assets/sprites/foreground.png');
+        game.load.image('backerground', '../../assets/sprites/backerground.png');
+        // game.load.image('foreground', '../../assets/sprites/foreground.png');
         game.load.binary('title', '../../assets/music/title.xm', binaryLoadCallback, this);
         game.load.image('title_png', '../../assets/sprites/titreMain.png');
         game.load.image('button_start_png', '../../assets/sprites/start_button.png');
@@ -26,6 +26,7 @@ var loadState = {
         spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+        upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
         sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
