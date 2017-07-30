@@ -31,8 +31,7 @@ var playState = {
         background = game.add.tileSprite(0, 0, 4096, 288, "background");
 
         // Map init
-        // map = game.add.tilemap('map' + levelSelector);
-        map = game.add.tilemap('map' + 0);
+        map = game.add.tilemap('map' + levelSelector);
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
         // Layers
