@@ -40,26 +40,6 @@ var playState = {
         layerGround.resizeWorld();
         layerScenery = map.createLayer('scenery');
 
-        // Player
-        rob = game.add.sprite(-64, 288 - 136, 'robot');
-        rob.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 14, true);
-        rob.animations.add('crouch', [8, 9, 10, 11, 12, 13], 14, true);
-        initSprite(rob, [0, 0]);
-        rob.animations.play('walk');
-        game.physics.arcade.enable(rob);
-        rob.body.setSize(10, 24, 3, 8);
-        rob.body.velocity.x = 125;
-        rob.body.gravity.y = 800;
-        rob.body.bounce.y = 0;
-
-        // Invisible scroll sprite
-        scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
-        game.physics.arcade.enable(scrollSprite);
-        scrollSprite.body.velocity.x = 80;
-        scrollSprite.body.collideWorldBounds = true;
-        game.camera.follow(scrollSprite);
-        game.camera.roundPx = false;
-
         // Tutorial
         if (levelSelector == 0) {
             var tutoScreens_jump = game.add.group();
@@ -83,6 +63,26 @@ var playState = {
             tutoScreens_backward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
             tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
         }
+
+        // Player
+        rob = game.add.sprite(-64, 288 - 136, 'robot');
+        rob.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 14, true);
+        rob.animations.add('crouch', [8, 9, 10, 11, 12, 13], 14, true);
+        initSprite(rob, [0, 0]);
+        rob.animations.play('walk');
+        game.physics.arcade.enable(rob);
+        rob.body.setSize(10, 24, 3, 8);
+        rob.body.velocity.x = 125;
+        rob.body.gravity.y = 800;
+        rob.body.bounce.y = 0;
+
+        // Invisible scroll sprite
+        scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
+        game.physics.arcade.enable(scrollSprite);
+        scrollSprite.body.velocity.x = 80;
+        scrollSprite.body.collideWorldBounds = true;
+        game.camera.follow(scrollSprite);
+        game.camera.roundPx = false;
 
         // Collectibles
         uranium = game.add.group();
