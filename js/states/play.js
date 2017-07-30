@@ -106,9 +106,6 @@ var playState = {
         gui.push(game.add.bitmapText(68, 32, 'SullyVerge', 'x00', 16));
         gui[1].fixedToCamera = true;
 
-        // Foreground
-        // foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
-
         game.renderer.renderSession.roundPixels = true;
     },
 

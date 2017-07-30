@@ -23,7 +23,8 @@ var loadState = {
         game.load.image('button_start_png', '../../assets/sprites/start_button.png');
         game.load.image('counter', '../../assets/sprites/counter.png');
         game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
-        // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
+        game.load.image("menuBackground", '../../assets/sprites/island.png');
+            // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
     },
 
     create: function() {
