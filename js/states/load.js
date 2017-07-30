@@ -5,7 +5,12 @@ var loadState = {
         game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
         game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
         game.load.spritesheet("steam", "../../assets/sprites/steam.png", 16, 32);
+        game.load.spritesheet("tutoScreens_jump", "../../assets/sprites/tuto_jump.png", 64, 32);
+        game.load.spritesheet("tutoScreens_crouch", "../../assets/sprites/tuto_crouch.png", 64, 32);
+        game.load.spritesheet("tutoScreens_forward", "../../assets/sprites/tuto_forward.png", 64, 32);
+        game.load.spritesheet("tutoScreens_backward", "../../assets/sprites/tuto_backward.png", 64, 32);
         game.load.tilemap('titleMap', '../../assets/maps/title.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map0', '../../assets/maps/map0.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map1', '../../assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map2', '../../assets/maps/map2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map3', '../../assets/maps/map3.json', null, Phaser.Tilemap.TILED_JSON);

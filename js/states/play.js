@@ -1,6 +1,10 @@
 var scrollSprite;
 var uranium;
 var steam;
+var tutoScreens_jump;
+var tutoScreens_crouch;
+var tutoScreens_forward;
+var tutoScreens_backward;
 var uraniumCount;
 var justPressedSpace = false;
 var background;
@@ -27,7 +31,8 @@ var playState = {
         background = game.add.tileSprite(0, 0, 4096, 288, "background");
 
         // Map init
-        map = game.add.tilemap('map' + levelSelector);
+        // map = game.add.tilemap('map' + levelSelector);
+        map = game.add.tilemap('map' + 0);
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
         // Layers
@@ -55,6 +60,30 @@ var playState = {
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
         game.camera.roundPx = false;
+
+        // Tutorial
+        if (levelSelector == 0) {
+            var tutoScreens_jump = game.add.group();
+            var tutoScreens_crouch = game.add.group();
+            var tutoScreens_forward = game.add.group();
+            var tutoScreens_backward = game.add.group();
+            tutoScreens_jump.enableBody = true;
+            tutoScreens_crouch.enableBody = true;
+            tutoScreens_forward.enableBody = true;
+            tutoScreens_backward.enableBody = true;
+            map.createFromObjects('tuto', 35, 'tutoScreens_jump', 0, true, false, tutoScreens_jump);
+            map.createFromObjects('tuto', 36, 'tutoScreens_crouch', 0, true, false, tutoScreens_crouch);
+            map.createFromObjects('tuto', 38, 'tutoScreens_forward', 0, true, false, tutoScreens_forward);
+            map.createFromObjects('tuto', 37, 'tutoScreens_backward', 0, true, false, tutoScreens_backward);
+            tutoScreens_jump.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+            tutoScreens_jump.callAll('animations.play', 'animations', 'idle');
+            tutoScreens_crouch.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+            tutoScreens_crouch.callAll('animations.play', 'animations', 'idle');
+            tutoScreens_forward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+            tutoScreens_forward.callAll('animations.play', 'animations', 'idle');
+            tutoScreens_backward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+            tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
+        }
 
         // Collectibles
         uranium = game.add.group();
