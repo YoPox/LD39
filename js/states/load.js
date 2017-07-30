@@ -18,6 +18,7 @@ var loadState = {
         game.load.image('button_start_png', '../../assets/sprites/start_button.png');
         game.load.image('counter', '../../assets/sprites/counter.png');
         game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
+        game.load.spritesheet('circle_icons', '../../assets/sprites/circle_icons.png', 18, 18)
         // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
     },
 

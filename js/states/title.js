@@ -1,4 +1,3 @@
-var levelSelector = 1;
 var keyDown = false;
 var titleText = [];
 var titleInterval1;
