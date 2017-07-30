@@ -4,7 +4,7 @@ var uraniumCount;
 var justPressedSpace = false;
 var background;
 // var backerground;
-// var foreground;
+var foreground;
 var rob;
 var map;
 var gui = [];
@@ -32,7 +32,7 @@ var playState = {
         background.alpha = 0.15;
 
         // Map init
-        map = game.add.tilemap('map1');
+        map = game.add.tilemap('map2');
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
         // Layers
@@ -72,7 +72,7 @@ var playState = {
         gui[1].fixedToCamera = true;
 
         // Foreground
-        // foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
+        foreground = game.add.tileSprite(0, 0, 4096, 288, "foreground");
 
         game.renderer.renderSession.roundPixels = true;
     },
@@ -80,7 +80,7 @@ var playState = {
     update: function() {
         // backerground.tilePosition.x = layerGround.position.x/4;
         background.tilePosition.x = layerGround.position.x/2;
-        // foreground.tilePosition.x = layerGround.position.x*1.5;
+        foreground.tilePosition.x = layerGround.position.x*1.5;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
         input();

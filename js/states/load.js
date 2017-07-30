@@ -4,11 +4,12 @@ var loadState = {
 
         game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
         game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
-        game.load.tilemap('map1', '../../assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map1', '../../assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map2', '../../assets/maps/map2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', '../../assets/sprites/tileset.png');
         game.load.image('background', '../../assets/sprites/background.png');
         // game.load.image('backerground', '../../assets/sprites/backerground.png');
-        // game.load.image('foreground', '../../assets/sprites/foreground.png');
+        game.load.image('foreground', '../../assets/sprites/foreground.png');
         game.load.binary('title', '../../assets/music/title.xm', binaryLoadCallback, this);
         game.load.image('title_png', '../../assets/sprites/titreMain.png');
         game.load.image('button_start_png', '../../assets/sprites/start_button.png');
