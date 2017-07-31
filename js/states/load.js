@@ -31,6 +31,12 @@ var loadState = {
         game.load.audio('sfx_jump', '../../assets/music/sfx_jump.ogg');
         game.load.audio('sfx_crouch', '../../assets/music/sfx_crouch.ogg');
         game.load.audio('sfx_uranium', '../../assets/music/sfx_uranium.ogg');
+        game.load.audio('sfx_dying', '../../assets/music/sfx_dying.ogg');
+        game.load.audio('sfx_finish', '../../assets/music/sfx_finish.ogg');
+        game.load.audio('sfx_gold', '../../assets/music/sfx_gold.ogg');
+        game.load.audio('sfx_move', '../../assets/music/sfx_move.ogg');
+        game.load.audio('sfx_select', '../../assets/music/sfx_select.ogg');
+        game.load.audio('sfx_unlock', '../../assets/music/sfx_unlock.ogg');
 
         if (window.localStorage['LD39']) {
             storage = JSON.parse(window.localStorage['LD39']);
@@ -49,6 +55,12 @@ var loadState = {
         sfx.push(game.add.audio('sfx_jump'));
         sfx.push(game.add.audio('sfx_crouch'));
         sfx.push(game.add.audio('sfx_uranium'));
+        sfx.push(game.add.audio('sfx_dying'));
+        sfx.push(game.add.audio('sfx_finish'));
+        sfx.push(game.add.audio('sfx_gold'));
+        sfx.push(game.add.audio('sfx_move'));
+        sfx.push(game.add.audio('sfx_select'));
+        sfx.push(game.add.audio('sfx_unlock'));
         for (var i = 0; i < sfx.length; i++) {
             sfx[i].volume = 0.5;
         }

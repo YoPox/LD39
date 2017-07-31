@@ -38,6 +38,7 @@ function checkDeath() {
     }
     if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
         if (!checkDeath.dead) {
+            sfx[3].play(false);
             checkDeath.dead = true;
             scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
             end(true);
@@ -87,19 +88,25 @@ function recall() {
     rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos) * 1.5;
 }
 
-function end(dead=false) {
-  setTimeout(function() {
-      cleanPlay();
-      game.state.start("menu");
-  }, 4000);
-  if (storage['scores'][levelSelector][0] < uraniumCount) {
-    storage['scores'][levelSelector][0] = uraniumCount;
-    window.localStorage.setItem('LD39',JSON.stringify(storage));
-  }
-  if (!dead) {
-    if (storage['progression'] <= levelSelector){
-      storage['progression'] = levelSelector + 1;
-      window.localStorage.setItem('LD39',JSON.stringify(storage));
+function end(dead = false) {
+    setTimeout(function() {
+        cleanPlay();
+        game.state.start("menu");
+    }, 4000);
+    if (storage['scores'][levelSelector][0] < uraniumCount) {
+        storage['scores'][levelSelector][0] = uraniumCount;
+        window.localStorage.setItem('LD39', JSON.stringify(storage));
     }
-  }
+    if (!dead) {
+        setTimeout(function() {
+            sfx[4].play(false);
+        }, 1000);
+        if (storage['progression'] <= levelSelector) {
+            setTimeout(function() {
+                sfx[8].play(false);
+            }, 4000);
+            storage['progression'] = levelSelector + 1;
+            window.localStorage.setItem('LD39', JSON.stringify(storage));
+        }
+    }
 }
