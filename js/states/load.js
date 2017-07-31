@@ -10,7 +10,9 @@ var loadState = {
         game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
         game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
         game.load.spritesheet("steam", "../../assets/sprites/steam.png", 16, 32);
-        game.load.spritesheet("foes", "../../assets/sprites/foes.png")
+        game.load.spritesheet("fallingRock", "../../assets/sprites/fallingRock.png", 16, 16);
+        game.load.spritesheet("lock", "../../assets/sprites/lock.png", 32, 32);
+        game.load.spritesheet("Ucell", "../../assets/sprites/Ucell.png", 32, 16);
         game.load.spritesheet("tutoScreens_jump", "../../assets/sprites/tuto_jump.png", 64, 32);
         game.load.spritesheet("tutoScreens_crouch", "../../assets/sprites/tuto_crouch.png", 64, 32);
         game.load.spritesheet("tutoScreens_forward", "../../assets/sprites/tuto_forward.png", 64, 32);

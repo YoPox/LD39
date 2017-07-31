@@ -37,6 +37,7 @@ var playState = {
         map = game.add.tilemap('map' + levelSelector);
         map.addTilesetImage('tiles');
         map.setCollisionBetween(0, 100, true);
+
         // Layers
         layerGround = map.createLayer('ground');
         game.physics.arcade.enable(layerGround);
@@ -67,13 +68,12 @@ var playState = {
         rob.body.gravity.y = 800;
         rob.body.bounce.y = 0;
 
-        // foes
+        // Foes
         foes = game.add.group();
         staticsFoes = game.add.group();
         foes.add(staticsFoes);
         fallingFoes = game.add.group();
         foes.add(fallingFoes);
-
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
