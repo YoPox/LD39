@@ -149,4 +149,5 @@ function cleanPlay() {
     gui = [];
     uranium.killAll();
     smoke.killAll();
+    foes.killAll();
 }

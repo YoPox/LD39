@@ -60,8 +60,12 @@ var menuState = {
                     y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
                 }, 750, Phaser.Easing.Cubic.Out, true);
                 levelSelector = newLevelSelector;
+                if (storage['progression'] >= levelSelector) {
+                  levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
+                } else {
+                  levelScoresText.text = "Blocked";
+                }
                 levelNameText.text = levelNames[levelSelector];
-                levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
                 tween.onComplete.add(stopMoving);
             }
         }
@@ -70,8 +74,12 @@ var menuState = {
 }
 
 function start() {
-    stopMoving();
-    game.state.start("play");
+    if (storage['progression'] >= levelSelector)
+    {
+      stopMoving();
+      cleanMenu();
+      game.state.start("play");
+    }
 }
 
 function stopMoving() {
@@ -79,8 +87,8 @@ function stopMoving() {
 }
 
 function cleanMenu() {
-    for (var i = 0; i < levelSprites.length; i++) {
-        levelSprites[i].kill();
-    }
-    levelSprites = [];
+  for (var i = 0; i < levelSprites.length; i++) {
+    levelSprites[i].kill();
+  }
+  levelSprites = [];
 }
