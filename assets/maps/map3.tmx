@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="158" height="18" tilewidth="16" tileheight="16" nextobjectid="97">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="34" columns="34">
-  <image source="../sprites/tileset.png" width="544" height="16"/>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="158" height="18" tilewidth="16" tileheight="16" nextobjectid="109">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="40" columns="40">
+  <image source="../sprites/tileset.png" width="640" height="16"/>
  </tileset>
  <layer name="ground" width="158" height="18">
   <data encoding="csv">
@@ -84,4 +84,18 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,20,29,19,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="blocker">
+  <object id="97" gid="39" x="1120" y="240" width="16" height="16"/>
+  <object id="98" gid="39" x="2032" y="272" width="16" height="16"/>
+  <object id="99" gid="39" x="2096" y="256" width="16" height="16"/>
+  <object id="100" gid="39" x="2288" y="272" width="16" height="16"/>
+  <object id="101" gid="40" x="2088" y="273" width="16" height="16"/>
+  <object id="102" gid="40" x="2272" y="273" width="16" height="16"/>
+  <object id="103" gid="40" x="2360" y="272" width="16" height="16"/>
+  <object id="104" gid="40" x="1192" y="240" width="16" height="16"/>
+  <object id="105" gid="39" x="2144" y="256" width="16" height="16"/>
+  <object id="106" gid="39" x="2224" y="256" width="16" height="16"/>
+  <object id="107" gid="40" x="2136" y="256" width="8" height="16"/>
+  <object id="108" gid="40" x="2216" y="256" width="8" height="16"/>
+ </objectgroup>
 </map>
