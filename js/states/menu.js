@@ -39,9 +39,11 @@ var menuState = {
 
     update: function() {
         if (spaceKey.isDown) {
+            sfx[7].play(false);
             start();
         }
         if (!moving && (rightKey.isDown || leftKey.isDown || upKey.isDown || downKey.isDown)) {
+            sfx[6].play(false);
             key = 0;
             if (downKey.isDown) {
                 key = 1;
@@ -61,9 +63,9 @@ var menuState = {
                 }, 750, Phaser.Easing.Cubic.Out, true);
                 levelSelector = newLevelSelector;
                 if (storage['progression'] >= levelSelector) {
-                  levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
+                    levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
                 } else {
-                  levelScoresText.text = "Blocked";
+                    levelScoresText.text = "Blocked";
                 }
                 levelNameText.text = levelNames[levelSelector];
                 tween.onComplete.add(stopMoving);
@@ -74,11 +76,12 @@ var menuState = {
 }
 
 function start() {
-    if (storage['progression'] >= levelSelector)
-    {
-      stopMoving();
-      cleanMenu();
-      game.state.start("play");
+    if (storage['progression'] >= levelSelector) {
+        stopMoving();
+        game.state.start("play");
+        setTimeout(function() {
+            cleanMenu();
+        }, 100);
     }
 }
 
@@ -87,8 +90,8 @@ function stopMoving() {
 }
 
 function cleanMenu() {
-  for (var i = 0; i < levelSprites.length; i++) {
-    levelSprites[i].kill();
-  }
-  levelSprites = [];
+    for (var i = 0; i < levelSprites.length; i++) {
+        levelSprites[i].kill();
+    }
+    levelSprites = [];
 }
