@@ -36,7 +36,7 @@ var menuState = {
         robot = game.add.sprite(platformPosition[levelSelector][0] * 2, platformPosition[levelSelector][1] * 2, "robot", 1);
         initSprite(robot, [0.5, 0.94], [2, 2]);
 
-        goldIcon = game.add.sprite(game.width - 32, 32, 'barrel', storage["scores"][levelSelector][1] * 1);
+        goldIcon = game.add.sprite(game.width - 32, 48, 'barrel', storage["scores"][levelSelector][1] * 1);
         initSprite(goldIcon, [1, 0.5], [2, 2]);
 
         uraniumIcon = game.add.sprite(game.width - 80, 32, 'uranium', 3);
