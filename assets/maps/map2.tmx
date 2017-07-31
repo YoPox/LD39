@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="175" height="18" tilewidth="16" tileheight="16" nextobjectid="101">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="45" columns="45">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="175" height="18" tilewidth="16" tileheight="16" nextobjectid="157">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="45">
   <image source="../sprites/tileset.png" width="720" height="16"/>
  </tileset>
  <layer name="ground" width="175" height="18">
@@ -57,6 +57,35 @@
   <object id="98" gid="40" x="1320" y="192" width="16" height="16"/>
   <object id="99" gid="40" x="728" y="192" width="16" height="16"/>
   <object id="100" gid="40" x="616" y="192" width="16" height="16"/>
+  <object id="114" gid="41" x="1088" y="16" width="16" height="16"/>
+  <object id="115" gid="41" x="1104" y="16" width="16" height="16"/>
+  <object id="118" gid="41" x="1152" y="16" width="16" height="16"/>
+  <object id="119" gid="41" x="1168" y="16" width="16" height="16"/>
+  <object id="125" gid="41" x="939" y="-190" width="16" height="16"/>
+  <object id="131" gid="41" x="944" y="48" width="16" height="16"/>
+  <object id="132" gid="41" x="960" y="48" width="16" height="16"/>
+  <object id="133" gid="41" x="976" y="48" width="16" height="16"/>
+  <object id="134" gid="41" x="992" y="48" width="16" height="16"/>
+  <object id="135" gid="41" x="1008" y="48" width="16" height="16"/>
+  <object id="136" gid="41" x="944" y="80" width="16" height="16"/>
+  <object id="138" gid="41" x="960" y="80" width="16" height="16"/>
+  <object id="139" gid="41" x="976" y="80" width="16" height="16"/>
+  <object id="140" gid="41" x="992" y="80" width="16" height="16"/>
+  <object id="141" gid="41" x="1008" y="80" width="16" height="16"/>
+  <object id="142" gid="41" x="944" y="112" width="16" height="16"/>
+  <object id="143" gid="41" x="960" y="112" width="16" height="16"/>
+  <object id="144" gid="41" x="976" y="112" width="16" height="16"/>
+  <object id="145" gid="41" x="992" y="112" width="16" height="16"/>
+  <object id="146" gid="41" x="1008" y="112" width="16" height="16"/>
+  <object id="147" gid="41" x="1120" y="16" width="16" height="16"/>
+  <object id="148" gid="41" x="1120" y="16" width="16" height="16"/>
+  <object id="149" gid="41" x="1136" y="16" width="16" height="16"/>
+  <object id="150" gid="41" x="1184" y="16" width="16" height="16"/>
+  <object id="151" gid="41" x="1200" y="16" width="16" height="16"/>
+  <object id="152" gid="41" x="1216" y="16" width="16" height="16"/>
+  <object id="154" gid="41" x="2576" y="144" width="16" height="16"/>
+  <object id="155" gid="41" x="2576" y="144" width="16" height="16"/>
+  <object id="156" gid="41" x="2592" y="144" width="16" height="16"/>
  </objectgroup>
  <layer name="scenery" width="175" height="18">
   <data encoding="csv">
