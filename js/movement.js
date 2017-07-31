@@ -105,6 +105,7 @@ function end(dead = false, fall = false) {
 
         // Jingle fin du niveau
         setTimeout(function() {
+            music.stop();
             sfx[4].play(false);
         }, 1000);
 
@@ -112,7 +113,7 @@ function end(dead = false, fall = false) {
         if (storage['progression'] <= levelSelector) {
             setTimeout(function() {
                 sfx[8].play(false);
-            }, 4000);
+            }, 2750);
             storage['progression'] = levelSelector + 1;
             window.localStorage.setItem('LD39', JSON.stringify(storage));
         }
@@ -144,6 +145,6 @@ function end(dead = false, fall = false) {
     setTimeout(function() {
         cleanPlay();
         game.state.start("menu");
-    }, 2000);
+    }, 3000);
 
 }

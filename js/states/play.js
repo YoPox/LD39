@@ -27,8 +27,8 @@ var foes = [];
 var playState = {
     create: function() {
         // MUSIC PLAYBACK
-        // var buffer = game.cache.getBinary('xm');
-        // music.play(buffer);
+        var buffer = game.cache.getBinary('bgm_play');
+        music.play(buffer);
 
         // Backerground
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
@@ -159,18 +159,25 @@ var playState = {
 
         recall();
         drawPolygonTransition();
+        pauseMusic();
 
+    },
+
+    render: function() {
+        game.debug.body(rob);
     }
 
 };
 
 function collisions() {
-    game.physics.arcade.collide(rob, layerGround);
-    game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
-    game.physics.arcade.collide(rob, barrel, collectBarrel, null, this);
-    game.physics.arcade.collide(rob, foes, end, null, true);
-    game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
-    game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
+    if (rob.alive) {
+        game.physics.arcade.collide(rob, layerGround);
+        game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
+        game.physics.arcade.collide(rob, barrel, collectBarrel, null, this);
+        game.physics.arcade.collide(rob, foes, end, null, true);
+        game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
+        game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
+    }
 
     // Foes
     game.physics.arcade.collide(rob, staticsFoes, end, null, true);

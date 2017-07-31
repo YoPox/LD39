@@ -7,14 +7,15 @@ var crouched;
 var transition = new Object();
 var graphics;
 var pressedSpace = false;
+var mute;
 
 var titleState = {
 
     create: function() {
 
         game.stage.backgroundColor = "#181225";
-        var buffer = game.cache.getBinary('title');
-        // music.play(buffer);
+        var buffer = game.cache.getBinary('bgm_title');
+        music.play(buffer);
 
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
 
@@ -121,6 +122,7 @@ var titleState = {
         }
 
         drawPolygonTransition();
+        pauseMusic();
 
     }
 }

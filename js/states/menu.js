@@ -13,12 +13,15 @@ var menuState = {
 
         cleanMenu();
 
+        var buffer = game.cache.getBinary('bgm_menu');
+        music.play(buffer);
+
         background = game.add.sprite(0, 0, "menuBackground");
         background.scale.x = 2;
         background.scale.y = 2;
 
-        levelNameText = game.add.bitmapText(32, 32, 'SullyVerge', levelNames[levelSelector])
-        initSprite(levelNameText, [0, 0.5])
+        levelNameText = game.add.bitmapText(160, 32, 'SullyVerge', levelNames[levelSelector])
+        initSprite(levelNameText, [0.5, 0.5])
 
         for (var i = 0; i < platformPosition.length; i++) {
             levelSprites.push(game.add.sprite(2 * platformPosition[i][0] - 10, 2 * platformPosition[i][1] - 10, 'level'));
@@ -36,8 +39,8 @@ var menuState = {
         robot = game.add.sprite(platformPosition[levelSelector][0] * 2, platformPosition[levelSelector][1] * 2, "robot", 1);
         initSprite(robot, [0.5, 0.94], [2, 2]);
 
-        goldIcon = game.add.sprite(game.width - 32, 48, 'barrel', storage["scores"][levelSelector][1] * 1);
-        initSprite(goldIcon, [1, 0.5], [2, 2]);
+        goldIcon = game.add.sprite(game.width - 32, 32, 'barrel', storage["scores"][levelSelector][1] * 1);
+        initSprite(goldIcon, [1, 0.5]);
 
         uraniumIcon = game.add.sprite(game.width - 80, 32, 'uranium', 3);
         initSprite(uraniumIcon, [1, 0.5], [2, 2]);
@@ -56,6 +59,9 @@ var menuState = {
     },
 
     update: function() {
+
+        pauseMusic();
+
         if (!transition.active) {
             if (spaceKey.isDown) {
                 start();
@@ -85,7 +91,7 @@ var menuState = {
                     if (storage['progression'] >= levelSelector) {
                         levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
                     } else {
-                        levelScoresText.text = "Blocked";
+                        levelScoresText.text = "Locked";
                     }
                     levelNameText.text = levelNames[levelSelector];
                     goldIcon.frame = storage["scores"][levelSelector][1] * 1;
