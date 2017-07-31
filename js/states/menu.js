@@ -35,8 +35,10 @@ var menuState = {
             if (downKey.isDown) {
                 key = 1;
             } else if (leftKey.isDown) {
+                robot.scale.x = -2;
                 key = 2;
             } else if (rightKey.isDown) {
+                robot.scale.x = 2;
                 key = 3;
             }
             if (roads[levelSelector][key] != -1 && !moving) {
@@ -45,7 +47,7 @@ var menuState = {
                 tween = game.add.tween(robot).to({
                     x: robot.x + (platformPosition[newLevelSelector][0] - platformPosition[levelSelector][0]) * 2,
                     y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
-                }, 250, Phaser.Easing.Cubic.InOut, true);
+                }, 750, Phaser.Easing.Cubic.Out, true);
                 levelSelector = newLevelSelector;
                 levelNameText.text = levelNames[levelSelector];
                 levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
@@ -57,6 +59,7 @@ var menuState = {
 }
 
 function start() {
+    stopMoving();
     game.state.start("play");
 }
 
