@@ -37,6 +37,8 @@ var menuState = {
         }
 
         robot = game.add.sprite(platformPosition[levelSelector][0] * 2, platformPosition[levelSelector][1] * 2, "robot", 1);
+        robot.animations.add('idle', [0, 1, 2, 1], 3, true);
+        robot.animations.play('idle');
         initSprite(robot, [0.5, 0.94], [2, 2]);
 
         goldIcon = game.add.sprite(game.width - 32, 32, 'barrel', storage["scores"][levelSelector][1] * 1);
