@@ -106,3 +106,9 @@ function drawPolygonTransition() {
         graphics.endFill();
     }
 }
+
+function collectBarrel(sprite, barrel) {
+    sfx[5].play(false);
+    storage["scores"][levelSelector][1] = true;
+    barrel.kill();
+}
