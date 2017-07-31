@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="158" height="18" tilewidth="16" tileheight="16" nextobjectid="163">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="67" columns="67">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="158" height="18" tilewidth="16" tileheight="16" nextobjectid="163">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="67">
   <image source="../sprites/tileset.png" width="1072" height="16"/>
   <tile id="14" probability="2"/>
   <tile id="16" probability="0.5"/>
