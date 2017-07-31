@@ -48,6 +48,7 @@ function startLoading() {
     game.load.tilemap('map1', '../../assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('map2', '../../assets/maps/map2.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('map3', '../../assets/maps/map3.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('map4', '../../assets/maps/map4.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.spritesheet('tiles', '../../assets/sprites/tileset.png', 16, 16);
     game.load.image('background', '../../assets/sprites/background.png');
     game.load.image('backerground', '../../assets/sprites/backerground.png');
@@ -107,4 +108,4 @@ function endLoading() {
 
 function updateLoading(progress, cacheKey, success, totalLoaded, totalFiles) {
     loadText.setText("Loading : " + progress + "%");
-}
+  }
