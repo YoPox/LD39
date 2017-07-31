@@ -100,6 +100,9 @@ var playState = {
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
         scrollSprite.body.velocity.x = 80;
+        if (levelSelector == 7) {
+            scrollSprite.body.velocity.x = 120;
+        }
         scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
         game.camera.roundPx = false;
