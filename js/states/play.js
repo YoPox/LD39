@@ -105,6 +105,9 @@ var playState = {
         gui.push(game.add.bitmapText(68, 32, 'SullyVerge', 'x00', 16));
         gui[1].fixedToCamera = true;
 
+        // Sound effects
+        downKey.onDown.add(function() { sfx[1].play(false); });
+
         game.renderer.renderSession.roundPixels = true;
     },
 

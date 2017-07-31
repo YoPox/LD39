@@ -74,7 +74,6 @@ function checkEnd() {
 function crouch() {
     if (downKey.isDown) {
         isCrouching = true;
-        sfx[1].play(false);
         rob.animations.play('crouch');
         rob.body.setSize(10, 14, 3, 18); //14 instead of 16 to be able to fit on 1 square high passages in a wall while falling
     } else if (isCrouching && !rob.body.blocked.up) {
