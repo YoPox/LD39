@@ -31,6 +31,9 @@ function startLoading() {
     game.load.binary('bgm_play', '../../assets/music/play.xm', binaryLoadCallback, this);
     game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
     game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
+    game.load.spritesheet("mouse", "../../assets/sprites/mouse.png", 16, 16);
+    game.load.spritesheet("fly", "../../assets/sprites/fly.png", 16, 16);
+    game.load.spritesheet("spider", "../../assets/sprites/spider.png", 16, 16);
     game.load.spritesheet("steam", "../../assets/sprites/steam.png", 16, 32);
     game.load.spritesheet("fallingRock", "../../assets/sprites/fallingRock.png", 16, 16);
     game.load.spritesheet("lock", "../../assets/sprites/lock.png", 32, 32);

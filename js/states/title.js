@@ -15,7 +15,7 @@ var titleState = {
 
         game.stage.backgroundColor = "#181225";
         var buffer = game.cache.getBinary('bgm_title');
-        music.play(buffer);
+        // music.play(buffer);
 
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
 

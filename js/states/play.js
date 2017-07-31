@@ -21,6 +21,7 @@ var layerGround;
 var layerScenery;
 var eqPos; // equilibrium position of the character during the scroll
 var isCrouching = false;
+var deco;
 
 var foes = [];
 
@@ -28,7 +29,7 @@ var playState = {
     create: function() {
         // MUSIC PLAYBACK
         var buffer = game.cache.getBinary('bgm_play');
-        music.play(buffer);
+        // music.play(buffer);
 
         // Backerground
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
@@ -51,6 +52,18 @@ var playState = {
         if (levelSelector == 0) {
             tuto();
         }
+
+        // Moving things
+        deco = [game.add.group(), game.add.group(), game.add.group()];
+        map.createFromObjects('objects', 60, 'fly', 0, true, false, deco[0]);
+        deco[0].callAll('animations.add', 'animations', 'idle', [0, 0, 1, 2, 2, 2, 3, 4, 5, 5, 4, 3, 2, 2, 1], 6, true);
+        deco[0].callAll('animations.play', 'animations', 'idle');
+        map.createFromObjects('objects', 61, 'mouse', 0, true, false, deco[1]);
+        deco[1].callAll('animations.add', 'animations', 'idle', [0, 0, 0, 0, 1, 2, 3, 4, 4, 4, 4, 5, 6, 7, 8, 8, 8], 6, true);
+        deco[1].callAll('animations.play', 'animations', 'idle');
+        map.createFromObjects('objects', 62, 'spider', 0, true, false, deco[2]);
+        deco[2].callAll('animations.add', 'animations', 'idle', [0, 0, 0, 0, 1, 2, 3, 3, 3, 3, 2, 1], 6, true);
+        deco[2].callAll('animations.play', 'animations', 'idle');
 
         // Barrels
         barrel = game.add.group();
