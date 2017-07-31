@@ -9,6 +9,8 @@ var menuState = {
 
     create: function() {
 
+        cleanMenu();
+
         background = game.add.sprite(0, 0, "menuBackground");
         background.scale.x = 2;
         background.scale.y = 2;
@@ -21,7 +23,9 @@ var menuState = {
             levelSprites[i].scale.x = 2;
             levelSprites[i].scale.y = 2;
             if (i <= storage["progression"]) {
-                levelSprites[i].tint = 0x66BB6A;
+                if (storage["scores"][i][0] > 0 && storage["scores"][i][0] == maxUranium[i]) {
+                    levelSprites[i].tint = 0xA5D6A7;
+                }
             } else {
                 levelSprites[i].tint = 0x424242;
             }

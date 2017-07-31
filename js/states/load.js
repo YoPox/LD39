@@ -42,7 +42,7 @@ var loadState = {
             storage = JSON.parse(window.localStorage['LD39']);
         } else {
             scores = [];
-            for (var i = 0; i < roads.length; i++) {
+            for (var i = 0; i < platformPosition.length; i++) {
                 scores.push([0, false]);
             }
             storage['scores'] = scores;

@@ -8,6 +8,7 @@ var levelNames = [
     "Bonus 1",
     "Bonus 2"
 ];
+
 var platformPosition = [
     [36, 59],
     [39, 86],
@@ -18,6 +19,7 @@ var platformPosition = [
     [136, 46],
     [113, 53]
 ];
+
 // roads[i] indique ou l'on va en apuyant sur up, down, left, right
 var roads = [
     [-1, 1, -1, 1],
@@ -31,8 +33,8 @@ var roads = [
 ];
 
 var maxUranium = [
-    13,
-    23,
+    0,
+    20,
     33,
     43,
     53,
