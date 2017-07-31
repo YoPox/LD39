@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="158" height="18" tilewidth="16" tileheight="16" nextobjectid="109">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="40" columns="40">
-  <image source="../sprites/tileset.png" width="640" height="16"/>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="158" height="18" tilewidth="16" tileheight="16" nextobjectid="159">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="44" columns="44">
+  <image source="../sprites/tileset.png" width="704" height="16"/>
  </tileset>
  <layer name="ground" width="158" height="18">
   <data encoding="csv">
@@ -25,7 +25,7 @@
 7,8,3,3,6,4,3,6,6,6,3,8,6,3,9,7,8,6,1,0,0,0,0,0,0,10,10,3,9,3,8,7,7,10,7,8,7,7,3,7,7,3,3,9,3,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,11,3,3,5,3,9,3,3,3,3,4,1,3,3,10,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,31,9,13,0,0,0,3,9,0,0,0,0,0,0,12,32,0,0,0,0,0,0,0,1,9,10,10,9,10,11,11,5,3,3,4,5,3,3,3,3,3,5,3,3,4,3,3,3,5,3,3,3,3,11,11,11,11,11,3,3,3,3,3,3
 </data>
  </layer>
- <objectgroup name="uranium">
+ <objectgroup name="objects">
   <object id="65" gid="2" x="256" y="160" width="16" height="16"/>
   <object id="66" gid="2" x="224" y="208" width="16" height="16"/>
   <object id="67" gid="2" x="288" y="240" width="16" height="16"/>
@@ -40,27 +40,37 @@
   <object id="94" gid="2" x="1792" y="240" width="16" height="16"/>
   <object id="95" gid="2" x="2128" y="240" width="16" height="16"/>
   <object id="96" gid="2" x="2208" y="240" width="16" height="16"/>
- </objectgroup>
- <objectgroup name="steam" visible="0">
-  <object id="56" gid="34" x="240" y="195" width="16" height="32"/>
-  <object id="68" gid="34" x="560" y="208" width="16" height="32"/>
-  <object id="69" gid="34" x="904" y="328" width="48" height="96"/>
-  <object id="71" gid="34" x="880" y="147" width="16" height="32"/>
-  <object id="74" gid="34" x="1120" y="160" width="16" height="32"/>
-  <object id="75" gid="34" x="1184" y="96" width="16" height="32"/>
-  <object id="79" gid="34" x="1280" y="192" width="16" height="32"/>
-  <object id="80" gid="34" x="1392" y="144" width="16" height="32"/>
-  <object id="81" gid="34" x="1488" y="192" width="16" height="32"/>
-  <object id="83" gid="34" x="1664" y="224" width="16" height="32"/>
-  <object id="84" gid="34" x="1776" y="272" width="16" height="32"/>
-  <object id="85" gid="34" x="2128" y="256" width="16" height="32"/>
-  <object id="86" gid="34" x="2208" y="256" width="16" height="32"/>
-  <object id="87" gid="34" x="2152" y="128" width="32" height="64"/>
-  <object id="88" gid="34" x="2232" y="160" width="32" height="64"/>
-  <object id="89" gid="34" x="2176" y="160" width="16" height="32"/>
-  <object id="90" gid="34" x="2208" y="144" width="16" height="32"/>
-  <object id="91" gid="34" x="2224" y="192" width="16" height="32"/>
-  <object id="92" gid="34" x="2096" y="160" width="16" height="32"/>
+  <object id="128" gid="34" x="240" y="195" width="16" height="32"/>
+  <object id="129" gid="34" x="560" y="208" width="16" height="32"/>
+  <object id="130" gid="34" x="904" y="328" width="48" height="96"/>
+  <object id="131" gid="34" x="880" y="147" width="16" height="32"/>
+  <object id="132" gid="34" x="1120" y="160" width="16" height="32"/>
+  <object id="133" gid="34" x="1184" y="96" width="16" height="32"/>
+  <object id="134" gid="34" x="1280" y="192" width="16" height="32"/>
+  <object id="135" gid="34" x="1392" y="144" width="16" height="32"/>
+  <object id="136" gid="34" x="1488" y="192" width="16" height="32"/>
+  <object id="137" gid="34" x="1664" y="224" width="16" height="32"/>
+  <object id="138" gid="34" x="1776" y="272" width="16" height="32"/>
+  <object id="139" gid="34" x="2128" y="256" width="16" height="32"/>
+  <object id="140" gid="34" x="2208" y="256" width="16" height="32"/>
+  <object id="141" gid="34" x="2152" y="128" width="32" height="64"/>
+  <object id="142" gid="34" x="2232" y="160" width="32" height="64"/>
+  <object id="143" gid="34" x="2176" y="160" width="16" height="32"/>
+  <object id="144" gid="34" x="2208" y="144" width="16" height="32"/>
+  <object id="145" gid="34" x="2224" y="192" width="16" height="32"/>
+  <object id="146" gid="34" x="2096" y="160" width="16" height="32"/>
+  <object id="147" gid="39" x="1120" y="240" width="16" height="16"/>
+  <object id="148" gid="39" x="2032" y="272" width="16" height="16"/>
+  <object id="149" gid="39" x="2096" y="256" width="16" height="16"/>
+  <object id="150" gid="39" x="2288" y="272" width="16" height="16"/>
+  <object id="151" gid="40" x="2088" y="273" width="16" height="16"/>
+  <object id="152" gid="40" x="2272" y="273" width="16" height="16"/>
+  <object id="153" gid="40" x="2360" y="272" width="16" height="16"/>
+  <object id="154" gid="40" x="1192" y="240" width="16" height="16"/>
+  <object id="155" gid="39" x="2144" y="256" width="16" height="16"/>
+  <object id="156" gid="39" x="2224" y="256" width="16" height="16"/>
+  <object id="157" gid="40" x="2136" y="256" width="8" height="16"/>
+  <object id="158" gid="40" x="2216" y="256" width="8" height="16"/>
  </objectgroup>
  <layer name="scenery" width="158" height="18">
   <data encoding="csv">
@@ -84,18 +94,4 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,20,29,19,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="blocker">
-  <object id="97" gid="39" x="1120" y="240" width="16" height="16"/>
-  <object id="98" gid="39" x="2032" y="272" width="16" height="16"/>
-  <object id="99" gid="39" x="2096" y="256" width="16" height="16"/>
-  <object id="100" gid="39" x="2288" y="272" width="16" height="16"/>
-  <object id="101" gid="40" x="2088" y="273" width="16" height="16"/>
-  <object id="102" gid="40" x="2272" y="273" width="16" height="16"/>
-  <object id="103" gid="40" x="2360" y="272" width="16" height="16"/>
-  <object id="104" gid="40" x="1192" y="240" width="16" height="16"/>
-  <object id="105" gid="39" x="2144" y="256" width="16" height="16"/>
-  <object id="106" gid="39" x="2224" y="256" width="16" height="16"/>
-  <object id="107" gid="40" x="2136" y="256" width="8" height="16"/>
-  <object id="108" gid="40" x="2216" y="256" width="8" height="16"/>
- </objectgroup>
 </map>
