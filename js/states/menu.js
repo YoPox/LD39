@@ -150,7 +150,7 @@ function levelUnlocked(i) {
       }
     }
   }
-  else if (levelSelector == 7 && levelSixUnlocked() && levelSevenUnlocked()) {
+  else if (levelSelector == 7) {
     for (var i = 0; i < 6; i++) {
       if (storage['scores'][i][0] < maxUranium[i] | !(storage['scores'][i][1])) {
         return false;
