@@ -1,3 +1,5 @@
+var storage = {};
+
 var loadState = {
 
     preload: function() {
@@ -22,6 +24,18 @@ var loadState = {
         game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
         game.load.image("menuBackground", '../../assets/sprites/island.png');
         // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
+
+        if (window.localStorage['LD39']) {
+          storage = JSON.parse(window.localStorage['LD39']);
+        }
+        else {
+          scores = [];
+          for (var i = 0; i < roads.length; i++) {
+            scores.push([0, false]);
+          }
+          storage['scores'] = scores;
+          storage['progression'] = 0;
+        }
     },
 
     create: function() {

@@ -46,6 +46,10 @@ function checkDeath() {
     } else {
         checkDeath.dead = false;
     }
+    if (storage['scores'][levelSelector][0] < uraniumCount) {
+      storage['scores'][levelSelector][0] = uraniumCount;
+      window.localStorage.setItem('LD39',JSON.stringify(storage));
+    }
 }
 
 function checkEnd() {

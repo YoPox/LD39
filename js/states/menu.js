@@ -3,6 +3,7 @@ var nbLevel = 3;
 var moving = false;
 var robot;
 var levelNameText;
+var levelScoresText;
 
 var menuState = {
 
@@ -19,6 +20,9 @@ var menuState = {
         initSprite(robot, [0.5, 0.94]);
         robot.scale.x = 2;
         robot.scale.y = 2;
+
+        levelScoresText = game.add.bitmapText(game.width - 32, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector])
+        initSprite(levelScoresText, [1, 0.5])
 
     },
 
@@ -37,13 +41,14 @@ var menuState = {
             }
             if (roads[levelSelector][key] != -1 && !moving) {
                 newLevelSelector = roads[levelSelector][key];
-                levelNameText.text = levelNames[newLevelSelector];
                 moving = true;
                 tween = game.add.tween(robot).to({
                     x: robot.x + (platformPosition[newLevelSelector][0] - platformPosition[levelSelector][0]) * 2,
                     y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
                 }, 250, Phaser.Easing.Cubic.InOut, true);
                 levelSelector = newLevelSelector;
+                levelNameText.text = levelNames[levelSelector];
+                levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
                 tween.onComplete.add(stopMoving);
             }
         }
