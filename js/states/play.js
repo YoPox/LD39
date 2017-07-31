@@ -18,6 +18,8 @@ var layerScenery;
 var eqPos; // equilibrium position of the character during the scroll
 var isCrouching = false;
 
+var foes = [];
+
 var playState = {
     create: function() {
         // MUSIC PLAYBACK
@@ -76,6 +78,14 @@ var playState = {
         rob.body.gravity.y = 800;
         rob.body.bounce.y = 0;
 
+        // foes
+        foes = game.add.group();
+        staticsFoes = game.add.group();
+        foes.add(staticsFoes);
+        fallingFoes = game.add.group();
+        foes.add(fallingFoes);
+
+
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
@@ -113,6 +123,8 @@ var playState = {
         background.tilePosition.x = layerGround.position.x / 2;
         game.physics.arcade.collide(rob, layerGround);
         game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
+        game.physics.arcade.collide(fallingFoes, layerGround);
+        game.physics.arcade.collide(rob, foes, end, null, true);
         input();
         recall();
         checkDeath();

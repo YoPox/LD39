@@ -40,17 +40,10 @@ function checkDeath() {
         if (!checkDeath.dead) {
             checkDeath.dead = true;
             scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
-            setTimeout(function() {
-                cleanPlay();
-                game.state.start("menu");
-            }, 1000);
+            end(true);
         }
     } else {
         checkDeath.dead = false;
-    }
-    if (storage['scores'][levelSelector][0] < uraniumCount) {
-        storage['scores'][levelSelector][0] = uraniumCount;
-        window.localStorage.setItem('LD39', JSON.stringify(storage));
     }
 }
 
@@ -61,10 +54,7 @@ function checkEnd() {
     if (scrollSprite.body.velocity.x == 0) {
         if (!checkEnd.ended) {
             checkEnd.ended = true;
-            setTimeout(function() {
-                cleanPlay();
-                game.state.start("menu");
-            }, 4000);
+            end();
         }
     } else {
         checkEnd.ended = false;
@@ -96,4 +86,20 @@ function move() {
 
 function recall() {
     rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos) * 1.5;
+}
+
+function end(dead=false) {
+  setTimeout(function() {
+      cleanPlay();
+      game.state.start("menu");
+  }, 4000);
+  if (storage['scores'][levelSelector][0] < uraniumCount) {
+    storage['scores'][levelSelector][0] = uraniumCount;
+    window.localStorage.setItem('LD39',JSON.stringify(storage));
+  }
+  if (!dead) {
+    if (storage['progression'] < levelSelector){
+      storage['progression'] = levelSelector + 1;
+    }
+  }
 }
