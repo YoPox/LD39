@@ -90,9 +90,10 @@ var menuState = {
                     }, 400, Phaser.Easing.Cubic.Out, true);
                     levelSelector = newLevelSelector;
                     // Text update
-                    if (storage['progression'] >= levelSelector) {
-                        levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
-                    } else {
+                    if (levelUnlocked(levelSelector)) {
+                      levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
+                    }
+                    else {
                         levelScoresText.text = "Locked";
                     }
                     levelNameText.text = levelNames[levelSelector];
@@ -136,4 +137,25 @@ function cleanMenu() {
     }
     levelSprites = [];
     graphics.kill();
+}
+
+function levelUnlocked(i) {
+  if (storage['progression'] < levelSelector) {
+    return false;
+  }
+  if (levelSelector == 6) {
+    for (var i = 0; i < 6; i++) {
+      if (storage['scores'][i][0] < maxUranium[i]) {
+        return false;
+      }
+    }
+  }
+  else if (levelSelector == 7 && levelSixUnlocked() && levelSevenUnlocked()) {
+    for (var i = 0; i < 6; i++) {
+      if (storage['scores'][i][0] < maxUranium[i] | !(storage['scores'][i][1])) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
