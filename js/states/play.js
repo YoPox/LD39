@@ -83,6 +83,9 @@ var playState = {
         fallingFoes.callAll('animations.add', 'animations', 'falling', [0, 1, 2], 4, true);
         fallingFoes.callAll('animations.add', 'animations', 'breaking', [3, 4, 5, 6, 7, 8, 9, 10], 14, false);
         fallingFoes.callAll('animations.play', 'animations', 'falling');
+        fallingFoes.setAll("body.checkCollision.up", false);
+        fallingFoes.setAll("body.checkCollision.right", false);
+        fallingFoes.setAll("body.checkCollision.left", false);
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
@@ -199,10 +202,10 @@ function tuto() {
     tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
 }
 
-function updateFallingFoe(f) {
-    if (f.x - 128 < rob.x) {
-        f.body.gravity.y = 200;
-    }
+function updateFallingFoe(f){
+  if (f.x - 90 < rob.x) {
+    f.body.gravity.y = 200;
+  }
 }
 
 function explodeFallingFoe(f) {
