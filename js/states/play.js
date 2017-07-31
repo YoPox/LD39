@@ -55,7 +55,7 @@ var playState = {
         // Steam
         steam = game.add.group();
         steam.enableBody = true;
-        map.createFromObjects('steam', 34, 'steam', 0, true, false, steam);
+        map.createFromObjects('objects', 34, 'steam', 0, true, false, steam);
         steam.callAll('animations.add', 'animations', 'idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], 9, true);
         steam.callAll('animations.play', 'animations', 'idle');
 
@@ -75,7 +75,7 @@ var playState = {
         foes = game.add.group();
         staticsFoes = game.add.group(foes);
         fallingFoes = game.add.group(foes);
-        map.createFromObjects("fallingFoes", 41, 'fallingRock', 0, true, false, fallingFoes)
+        map.createFromObjects("objects", 41, 'fallingRock', 0, true, false, fallingFoes)
         game.physics.arcade.enable(foes);
         fallingFoes.setAll("body.bounce.y", 0.2);
         fallingFoes.callAll('animations.add', 'animations', 'falling', [0, 1, 2], 4, true);
@@ -93,7 +93,7 @@ var playState = {
         // Collectibles
         uranium = game.add.group();
         uranium.enableBody = true;
-        map.createFromObjects('uranium', 2, 'uranium', 0, true, false, uranium);
+        map.createFromObjects('objects', 2, 'uranium', 0, true, false, uranium);
         uranium.callAll('animations.add', 'animations', 'idle', [0, 1, 0, 2], 4, true);
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
@@ -104,8 +104,8 @@ var playState = {
         stander = game.add.group();
         blocker.enableBody = true;
         stander.enableBody = true;
-        map.createFromObjects('blocker', 39, '', 0, true, false, blocker);
-        map.createFromObjects('blocker', 40, '', 0, true, false, stander);
+        map.createFromObjects('objects', 39, '', 0, true, false, blocker);
+        map.createFromObjects('objects', 40, '', 0, true, false, stander);
 
         // GUI
         gui.push(game.add.sprite(32, 16, 'counter'));
@@ -189,22 +189,22 @@ function tuto() {
     tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
 }
 
-function updateFallingFoe(f){
-  if (f.x - 128 < rob.x) {
-    f.body.gravity.y = 200;
-  }
+function updateFallingFoe(f) {
+    if (f.x - 128 < rob.x) {
+        f.body.gravity.y = 200;
+    }
 }
 
 function explodeFallingFoe(f) {
-  f.animations.play('breaking');
-  f.body.enable = false;
-  setTimeout(function() {
-    f.visible = false;
-  }, 1000);
+    f.animations.play('breaking');
+    f.body.enable = false;
+    setTimeout(function() {
+        f.visible = false;
+    }, 1000);
 }
 
 function collisionFoeRob(f) {
-  if (f.alive) {
-    end(true);
-  }
+    if (f.alive) {
+        end(true);
+    }
 }

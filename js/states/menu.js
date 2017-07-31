@@ -4,6 +4,8 @@ var moving = false;
 var robot;
 var levelNameText;
 var levelScoresText;
+var uraniumIcon;
+var goldIcon;
 
 var menuState = {
 
@@ -32,18 +34,21 @@ var menuState = {
         }
 
         robot = game.add.sprite(platformPosition[levelSelector][0] * 2, platformPosition[levelSelector][1] * 2, "robot", 15);
-        initSprite(robot, [0.5, 0.94]);
-        robot.scale.x = 2;
-        robot.scale.y = 2;
+        initSprite(robot, [0.5, 0.94], [2, 2]);
 
-        levelScoresText = game.add.bitmapText(game.width - 32, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector])
+        goldIcon = game.add.sprite(game.width - 32, 32, 'uranium', storage["scores"][levelSelector][1] * 1);
+        initSprite(goldIcon, [1, 0.5], [2, 2]);
+
+        uraniumIcon = game.add.sprite(game.width - 80, 32, 'uranium', 3);
+        initSprite(uraniumIcon, [1, 0.5], [2, 2]);
+
+        levelScoresText = game.add.bitmapText(game.width - 128, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector])
         initSprite(levelScoresText, [1, 0.5])
 
     },
 
     update: function() {
         if (spaceKey.isDown) {
-            sfx[7].play(false);
             start();
         }
         if (!moving && (rightKey.isDown || leftKey.isDown || upKey.isDown || downKey.isDown)) {
@@ -66,12 +71,14 @@ var menuState = {
                     y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
                 }, 750, Phaser.Easing.Cubic.Out, true);
                 levelSelector = newLevelSelector;
+                // Text update
                 if (storage['progression'] >= levelSelector) {
                     levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
                 } else {
                     levelScoresText.text = "Blocked";
                 }
                 levelNameText.text = levelNames[levelSelector];
+                goldIcon.frame = storage["scores"][levelSelector][1] * 1;
                 tween.onComplete.add(stopMoving);
             }
         }
@@ -81,6 +88,7 @@ var menuState = {
 
 function start() {
     if (storage['progression'] >= levelSelector) {
+        sfx[7].play(false);
         stopMoving();
         game.state.start("play");
         setTimeout(function() {
