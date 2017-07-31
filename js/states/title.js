@@ -3,6 +3,7 @@ var titleText = [];
 var titleInterval1;
 var titleInterval2;
 var titleJump = false;
+var crouched;
 
 var titleState = {
 
@@ -34,13 +35,16 @@ var titleState = {
         // Player
         rob = game.add.sprite(32, 288 - 96, 'robot');
         initSprite(rob, [0, 0]);
-        rob.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 16, true);
-        rob.animations.add('crouch', [8, 9, 10, 11, 12, 13], 14, true);
+        rob.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 14, true);
+        rob.animations.add('crouching', [8, 9, 10, 11, 12, 13], 48, false);
+        rob.animations.add('crouch', [14, 15, 16, 17, 18, 19], 14, true);
+        rob.animations.add('standing', [13, 12, 11, 10, 9, 8], 48, false);
         game.physics.arcade.enable(rob);
         rob.body.setSize(10, 24, 3, 8);
         rob.body.gravity.y = 800;
         rob.body.bounce.y = 0;
         rob.animations.play('walk', 14);
+        crouched = false;
 
         // Text
         titleText.push(game.add.bitmapText(game.width / 2, game.height / 4, 'SullyVerge', 'Energy Runner', 64));
@@ -51,10 +55,23 @@ var titleState = {
         // Rob animation
         // Crouch
         titleInterval1 = setInterval(function() {
-            rob.animations.play('walk');
             var randnb = Math.random();
             if (randnb < 0.2) {
-                rob.animations.play('crouch');
+                if (!crouched) {
+                    rob.animations.play('crouching');
+                }
+                crouched = true
+                setTimeout(function () {
+                    rob.animations.play('crouch');
+                }, 125);
+            } else {
+                if (crouched) {
+                    rob.animations.play('standing');
+                }
+                crouched = false;
+                setTimeout(function () {
+                    rob.animations.play('walk');
+                }, 125);
             }
         }, 1500);
         // Jump
