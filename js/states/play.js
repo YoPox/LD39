@@ -161,10 +161,6 @@ var playState = {
         drawPolygonTransition();
         pauseMusic();
 
-    },
-
-    render: function() {
-        game.debug.body(rob);
     }
 
 };

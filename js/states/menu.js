@@ -85,7 +85,7 @@ var menuState = {
                     tween = game.add.tween(robot).to({
                         x: robot.x + (platformPosition[newLevelSelector][0] - platformPosition[levelSelector][0]) * 2,
                         y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
-                    }, 750, Phaser.Easing.Cubic.Out, true);
+                    }, 400, Phaser.Easing.Cubic.Out, true);
                     levelSelector = newLevelSelector;
                     // Text update
                     if (storage['progression'] >= levelSelector) {
