@@ -17,3 +17,8 @@ function collectUranium(sprite, ura) {
     }
     ura.kill();
 }
+
+function collectBarrel(sprite, barrel) {
+    sfx[5].play(false);
+    barrel.kill();
+}

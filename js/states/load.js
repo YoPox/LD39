@@ -9,6 +9,7 @@ var loadState = {
         game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
         game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
         game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
+        game.load.spritesheet("barrel", "../../assets/sprites/barrel.png", 32, 32);
         game.load.spritesheet("steam", "../../assets/sprites/steam.png", 16, 32);
         game.load.spritesheet("fallingRock", "../../assets/sprites/fallingRock.png", 16, 16);
         game.load.spritesheet("lock", "../../assets/sprites/lock.png", 32, 32);

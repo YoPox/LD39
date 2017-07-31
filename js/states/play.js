@@ -1,5 +1,6 @@
 var scrollSprite;
 var uranium;
+var barrel;
 var steam;
 var tutoGroup;
 var tutoScreens_jump;
@@ -80,7 +81,7 @@ var playState = {
         map.createFromObjects("objects", 41, 'fallingRock', 0, true, false, fallingFoes)
         game.physics.arcade.enable(foes);
         fallingFoes.setAll("body.bounce.y", 0.2);
-        fallingFoes.callAll('animations.add', 'animations', 'falling', [0, 1, 2], 4, true);
+        fallingFoes.callAll('animations.add', 'animations', 'falling', [0, 1, 2], 12, true);
         fallingFoes.callAll('animations.add', 'animations', 'breaking', [3, 4, 5, 6, 7, 8, 9, 10], 14, false);
         fallingFoes.callAll('animations.play', 'animations', 'falling');
         fallingFoes.setAll("body.checkCollision.up", false);
@@ -102,6 +103,13 @@ var playState = {
         uranium.callAll('animations.add', 'animations', 'idle', [0, 1, 0, 2], 4, true);
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
+
+        // Barrels
+        barrel = game.add.group();
+        barrel.enableBody = true;
+        map.createFromObjects('objects', , 'barrel', 0, true, false, barrel);
+        barrel.callAll('animations.add', 'animations', 'idle', [2,3,4,5,6,7], 6, true);
+        barrel.callAll('animations.play', 'animations', 'idle');
 
         // Stand up prevention
         canStand = true;
@@ -151,12 +159,12 @@ var playState = {
 function collisions() {
     game.physics.arcade.collide(rob, layerGround);
     game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
+    game.physics.arcade.collide(rob, barrel, collectBarrel, null, this);
     game.physics.arcade.collide(rob, foes, end, null, true);
     game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
     game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
 
     //foes
-    //game.physics.arcade.collide(fallingFoes, layerGround);
     game.physics.arcade.collide(rob, staticsFoes, end, null, true);
     game.physics.arcade.collide(fallingFoes, layerGround, explodeFallingFoe);
     game.physics.arcade.collide(rob, fallingFoes, collisionFoeRob);
