@@ -579,15 +579,15 @@
  "tileheight":16,
  "tilesets":[
         {
-         "columns":44,
+         "columns":45,
          "firstgid":1,
          "image":"..\/sprites\/tileset.png",
          "imageheight":16,
-         "imagewidth":704,
+         "imagewidth":720,
          "margin":0,
          "name":"tiles",
          "spacing":0,
-         "tilecount":44,
+         "tilecount":45,
          "tileheight":16,
          "tilewidth":16
         }],

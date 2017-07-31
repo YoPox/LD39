@@ -156,8 +156,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":206.891336131369,
-                 "y":164.975030190323
+                 "x":206.891,
+                 "y":164.975
                 }, 
                 {
                  "gid":34,
@@ -181,7 +181,7 @@
                  "visible":true,
                  "width":16,
                  "x":464,
-                 "y":176.766001017711
+                 "y":176.766
                 }, 
                 {
                  "gid":34,
@@ -411,15 +411,15 @@
  "tileheight":16,
  "tilesets":[
         {
-         "columns":44,
+         "columns":45,
          "firstgid":1,
          "image":"..\/sprites\/tileset.png",
          "imageheight":16,
-         "imagewidth":704,
+         "imagewidth":720,
          "margin":0,
          "name":"tiles",
          "spacing":0,
-         "tilecount":44,
+         "tilecount":45,
          "tileheight":16,
          "tilewidth":16
         }],
