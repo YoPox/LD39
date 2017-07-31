@@ -6,6 +6,9 @@ var tutoScreens_jump;
 var tutoScreens_crouch;
 var tutoScreens_forward;
 var tutoScreens_backward;
+var blocker;
+var stander;
+var canStand;
 var uraniumCount;
 var justPressedSpace = false;
 var background;
@@ -91,6 +94,15 @@ var playState = {
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
 
+        // Stand up prevention
+        canStand = true;
+        blocker = game.add.group();
+        stander = game.add.group();
+        blocker.enableBody = true;
+        stander.enableBody = true;
+        map.createFromObjects('blocker', 39, '', 0, true, false, blocker);
+        map.createFromObjects('blocker', 40, '', 0, true, false, stander);
+
         // GUI
         gui.push(game.add.sprite(32, 16, 'counter'));
         gui[0].fixedToCamera = true;
@@ -106,10 +118,7 @@ var playState = {
     update: function() {
         backerground.tilePosition.x = layerGround.position.x / 1.1;
         background.tilePosition.x = layerGround.position.x / 2;
-        game.physics.arcade.collide(rob, layerGround);
-        game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
-        game.physics.arcade.collide(fallingFoes, layerGround);
-        game.physics.arcade.collide(rob, foes, end, null, true);
+        collisions();
         input();
         recall();
         checkDeath();
@@ -120,6 +129,15 @@ var playState = {
         // game.debug.body(rob);
     }
 };
+
+function collisions() {
+    game.physics.arcade.collide(rob, layerGround);
+    game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
+    game.physics.arcade.collide(fallingFoes, layerGround);
+    game.physics.arcade.collide(rob, foes, end, null, true);
+    game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
+    game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
+}
 
 function input() {
     jump();
@@ -132,6 +150,8 @@ function cleanPlay() {
     uranium.killAll();
     steam.killAll();
     foes.killAll();
+    blocker.killAll();
+    stander.killAll();
     if (levelSelector == 0) {
       tutoGroup.killAll();
     }
