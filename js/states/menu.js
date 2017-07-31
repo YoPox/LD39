@@ -1,5 +1,5 @@
 var levelSelector = 0;
-var nbLevel = 3;
+var levelSprites = [];
 var moving = false;
 var robot;
 var levelNameText;
@@ -15,6 +15,17 @@ var menuState = {
 
         levelNameText = game.add.bitmapText(32, 32, 'SullyVerge', levelNames[levelSelector])
         initSprite(levelNameText, [0, 0.5])
+
+        for (var i = 0; i < platformPosition.length; i++) {
+            levelSprites.push(game.add.sprite(2 * platformPosition[i][0] - 10, 2 * platformPosition[i][1] - 10, 'level'));
+            levelSprites[i].scale.x = 2;
+            levelSprites[i].scale.y = 2;
+            if (i <= storage["progression"]) {
+                levelSprites[i].tint = 0x66BB6A;
+            } else {
+                levelSprites[i].tint = 0x424242;
+            }
+        }
 
         robot = game.add.sprite(platformPosition[levelSelector][0] * 2, platformPosition[levelSelector][1] * 2, "robot", 15);
         initSprite(robot, [0.5, 0.94]);

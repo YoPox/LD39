@@ -7,6 +7,7 @@ function initSprite(sprite, anchor) {
 
 function collectUranium(sprite, ura) {
     uraniumCount++;
+    sfx[2].play(false);
     if (uraniumCount < 10) {
         gui[1].text = 'x0' + uraniumCount;
     } else {

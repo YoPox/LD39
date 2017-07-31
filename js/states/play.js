@@ -66,6 +66,13 @@ var playState = {
             tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
         }
 
+        // Steam
+        steam = game.add.group();
+        steam.enableBody = true;
+        map.createFromObjects('steam', 34, 'steam', 0, true, false, steam);
+        steam.callAll('animations.add', 'animations', 'idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], 9, true);
+        steam.callAll('animations.play', 'animations', 'idle');
+
         // Player
         rob = game.add.sprite(-64, 288 - 136, 'robot');
         rob.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 14, true);
@@ -101,13 +108,6 @@ var playState = {
         uranium.callAll('animations.add', 'animations', 'idle', [0, 1, 0, 2], 4, true);
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
-
-        // Steam
-        steam = game.add.group();
-        steam.enableBody = true;
-        map.createFromObjects('steam', 34, 'steam', 0, true, false, steam);
-        steam.callAll('animations.add', 'animations', 'idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], 9, true);
-        steam.callAll('animations.play', 'animations', 'idle');
 
         // GUI
         gui.push(game.add.sprite(32, 16, 'counter'));

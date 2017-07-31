@@ -5,6 +5,8 @@ var loadState = {
 
     preload: function() {
 
+        game.load.binary('title', '../../assets/music/title.xm', binaryLoadCallback, this);
+        game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
         game.load.spritesheet("robot", "../../assets/sprites/robot.png", 16, 32);
         game.load.spritesheet("uranium", "../../assets/sprites/uranium.png", 16, 16);
         game.load.spritesheet("steam", "../../assets/sprites/steam.png", 16, 32);
@@ -21,12 +23,12 @@ var loadState = {
         game.load.image('tiles', '../../assets/sprites/tileset.png');
         game.load.image('background', '../../assets/sprites/background.png');
         game.load.image('backerground', '../../assets/sprites/backerground.png');
-        game.load.binary('title', '../../assets/music/title.xm', binaryLoadCallback, this);
         game.load.image('counter', '../../assets/sprites/counter.png');
-        game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
         game.load.image("menuBackground", '../../assets/sprites/island.png');
+        game.load.image("level", '../../assets/sprites/level.png');
         game.load.audio('sfx_jump', '../../assets/music/sfx_jump.ogg');
         game.load.audio('sfx_crouch', '../../assets/music/sfx_crouch.ogg');
+        game.load.audio('sfx_uranium', '../../assets/music/sfx_uranium.ogg');
 
         if (window.localStorage['LD39']) {
             storage = JSON.parse(window.localStorage['LD39']);
@@ -44,9 +46,11 @@ var loadState = {
 
         sfx.push(game.add.audio('sfx_jump'));
         sfx.push(game.add.audio('sfx_crouch'));
-        for (var sfx_item in sfx) {
-            sfx_item.volume = 0.4;
+        sfx.push(game.add.audio('sfx_uranium'));
+        for (var i = 0; i < sfx.length; i++) {
+            sfx[i].volume = 0.5;
         }
+        sfx[2].volume = 0.3;
 
 
         spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
