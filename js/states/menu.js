@@ -52,12 +52,12 @@ var menuState = {
 
         graphics = game.add.graphics(0, 0);
 
-        game.add.tween(transition).to({
+        var tween = game.add.tween(transition).to({
             radius: 512
-        }, 1000, Phaser.Easing.Cubic.Out, true);
-        setTimeout(function() {
+        }, 800, Phaser.Easing.Cubic.Out, true);
+        tween.onComplete.add(function() {
             transition.active = false;
-        }, 1000);
+        });
     },
 
     update: function() {
@@ -84,7 +84,7 @@ var menuState = {
                 if (roads[levelSelector][key] != -1 && !moving) {
                     newLevelSelector = roads[levelSelector][key];
                     moving = true;
-                    tween = game.add.tween(robot).to({
+                    var tween = game.add.tween(robot).to({
                         x: robot.x + (platformPosition[newLevelSelector][0] - platformPosition[levelSelector][0]) * 2,
                         y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
                     }, 400, Phaser.Easing.Cubic.Out, true);
@@ -111,10 +111,18 @@ function start() {
     if (storage['progression'] >= levelSelector) {
         sfx[7].play(false);
         stopMoving();
-        game.state.start("play");
-        setTimeout(function() {
-            cleanMenu();
-        }, 100);
+        transition.active = true;
+        transition.type = 1;
+        transition.radius = 0;
+        var tween = game.add.tween(transition).to({
+            radius: 1024
+        }, 600, Phaser.Easing.Cubic.Out, true);
+        tween.onComplete.add(function() {
+            game.state.start("play");
+            setTimeout(function() {
+                cleanMenu();
+            }, 100);
+        });
     }
 }
 

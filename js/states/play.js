@@ -112,13 +112,13 @@ var playState = {
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
         game.physics.arcade.enable(scrollSprite);
+        scrollSprite.body.collideWorldBounds = true;
+        game.camera.roundPx = false;
         scrollSprite.body.velocity.x = 80;
         if (levelSelector == 7) {
             scrollSprite.body.velocity.x = 120;
         }
-        scrollSprite.body.collideWorldBounds = true;
         game.camera.follow(scrollSprite);
-        game.camera.roundPx = false;
 
         // Collectibles
         uranium = game.add.group();
@@ -154,27 +154,38 @@ var playState = {
             }, 125);
         });
 
-        transition.active = false;
-        transition.radius = 512;
+        graphics.kill();
+        graphics = game.add.graphics(0, 0);
+        transition.active = true;
+        transition.type = 1;
+        transition.radius = 1024;
+        var tween = game.add.tween(transition).to({
+            radius: 0
+        }, 600, Phaser.Easing.Cubic.In, true);
+        tween.onComplete.add(function() {
+            drawPolygonTransition();
+            transition.active = false;
+        });
 
         game.renderer.renderSession.roundPixels = true;
     },
 
     update: function() {
 
+        drawPolygonTransition();
+
+        collisions();
+        recall();
         backerground.tilePosition.x = layerGround.position.x / 1.1;
         background.tilePosition.x = layerGround.position.x / 2;
         fallingFoes.forEach(updateFallingFoe);
-        collisions();
-        input();
 
-        if (rob.alive) {
+        if (rob.alive && !transition.active) {
             checkDeath();
             checkEnd();
         }
+        input();
 
-        recall();
-        drawPolygonTransition();
         pauseMusic();
 
     }

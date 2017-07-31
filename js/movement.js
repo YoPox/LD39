@@ -128,23 +128,28 @@ function end(dead = false, fall = false) {
             rob.body.setSize(0, 0);
             rob.body.velocity.y = -300;
             rob.body.velocity.x = 50;
+        } else {
+            rob.body.velocity.x = 0;
         }
 
     }
 
     // Retour au menu
+    graphics.kill();
     graphics = game.add.graphics(0, 0);
     graphics.fixedToCamera = true;
     transition.active = true;
+    transition.type = 0;
+    transition.radius = 512;
     setTimeout(function() {
         game.add.tween(transition).to({
             radius: 0
-        }, 1000, Phaser.Easing.Cubic.In, true);
+        }, 800, Phaser.Easing.Cubic.In, true);
     }, 500);
 
     setTimeout(function() {
         cleanPlay();
         game.state.start("menu");
-    }, 3000);
+    }, 2500);
 
 }

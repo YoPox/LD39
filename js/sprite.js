@@ -71,39 +71,53 @@ function drawPolygonTransition() {
 
         graphics.clear();
         graphics.beginFill(0x000000);
-        graphics.drawPolygon([
-            [-transition.radius, game.height / 2],
-            [0, 0],
-            [game.width / 2, -transition.radius],
-            [game.width / 2, game.height / 2 - transition.radius],
-            [game.width / 2 - transition.radius, game.height / 2]
-        ]);
 
-        graphics.drawPolygon([
-            [-transition.radius, game.height / 2],
-            [0, game.height],
-            [game.width / 2, game.height + transition.radius],
-            [game.width / 2, game.height / 2 + transition.radius],
-            [game.width / 2 - transition.radius, game.height / 2]
-        ]);
+        if (transition.type == 0) {
 
-        graphics.drawPolygon([
-            [game.width + transition.radius, game.height / 2],
-            [game.width, 0],
-            [game.width / 2, -transition.radius],
-            [game.width / 2, game.height / 2 - transition.radius],
-            [game.width / 2 + transition.radius, game.height / 2]
-        ]);
+            graphics.drawPolygon([
+                [-transition.radius, game.height / 2],
+                [0, 0],
+                [game.width / 2, -transition.radius],
+                [game.width / 2, game.height / 2 - transition.radius],
+                [game.width / 2 - transition.radius, game.height / 2]
+            ]);
 
-        graphics.drawPolygon([
-            [game.width + transition.radius, game.height / 2],
-            [game.width, game.height],
-            [game.width / 2, game.height + transition.radius],
-            [game.width / 2, game.height / 2 + transition.radius],
-            [game.width / 2 + transition.radius, game.height / 2]
-        ]);
+            graphics.drawPolygon([
+                [-transition.radius, game.height / 2],
+                [0, game.height],
+                [game.width / 2, game.height + transition.radius],
+                [game.width / 2, game.height / 2 + transition.radius],
+                [game.width / 2 - transition.radius, game.height / 2]
+            ]);
+
+            graphics.drawPolygon([
+                [game.width + transition.radius, game.height / 2],
+                [game.width, 0],
+                [game.width / 2, -transition.radius],
+                [game.width / 2, game.height / 2 - transition.radius],
+                [game.width / 2 + transition.radius, game.height / 2]
+            ]);
+
+            graphics.drawPolygon([
+                [game.width + transition.radius, game.height / 2],
+                [game.width, game.height],
+                [game.width / 2, game.height + transition.radius],
+                [game.width / 2, game.height / 2 + transition.radius],
+                [game.width / 2 + transition.radius, game.height / 2]
+            ]);
+
+        } else {
+
+            graphics.drawPolygon([
+                [0, 0],
+                [transition.radius, 0],
+                [0, transition.radius * Math.sqrt(2) / 2]
+            ]);
+
+        }
 
         graphics.endFill();
+        graphics.visible = true;
     }
 }
 

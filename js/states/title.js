@@ -9,6 +9,7 @@ var graphics;
 var pressedSpace = false;
 var mute;
 
+
 var titleState = {
 
     create: function() {
@@ -93,6 +94,7 @@ var titleState = {
         graphics = game.add.graphics(0, 0);
         transition.active = false;
         transition.radius = 512;
+        transition.type = 0;
 
     },
 
@@ -100,15 +102,16 @@ var titleState = {
 
         if (spaceKey.isDown && !pressedSpace) {
             pressedSpace = true;
+            sfx[7].play();
             cleanTitle();
             transition.active = true;
             game.add.tween(transition).to({
                 radius: 0
-            }, 1000, Phaser.Easing.Cubic.In, true);
+            }, 800, Phaser.Easing.Cubic.In, true);
             setTimeout(function() {
                 graphics.kill();
                 game.state.start("menu");
-            }, 1500);
+            }, 1300);
         }
         game.physics.arcade.collide(rob, layerGround);
 
