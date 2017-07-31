@@ -147,4 +147,6 @@ function input() {
 
 function cleanPlay() {
     gui = [];
+    uranium.killAll();
+    smoke.killAll();
 }

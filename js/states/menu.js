@@ -77,3 +77,10 @@ function start() {
 function stopMoving() {
     moving = false;
 }
+
+function cleanMenu() {
+    for (var i = 0; i < levelSprites.length; i++) {
+        levelSprites[i].kill();
+    }
+    levelSprites = [];
+}
