@@ -27,7 +27,7 @@ var menuState = {
             levelSprites.push(game.add.sprite(2 * platformPosition[i][0] - 10, 2 * platformPosition[i][1] - 10, 'level'));
             levelSprites[i].scale.x = 2;
             levelSprites[i].scale.y = 2;
-            if (i <= storage["progression"]) {
+            if (levelUnlocked(i)) {
                 if (storage["scores"][i][0] > 0 && storage["scores"][i][0] == maxUranium[i]) {
                     levelSprites[i].tint = 0xA5D6A7;
                 }
