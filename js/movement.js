@@ -34,14 +34,12 @@ function jump() {
 
 function checkDeath() {
     if (typeof checkDeath.dead == 'undefined') {
-        checkDeath.dead = false; // used to prevent the timeout function from being called every frame for a few seconds...
+        checkDeath.dead = false;
     }
-    if (scrollSprite.x - rob.x > 300 || rob.y > 310) { //310 and not 288 which is the screen height
+    if (rob.alive && (scrollSprite.x - rob.x > 300 || rob.y > 310)) {
         if (!checkDeath.dead) {
-            sfx[3].play(false);
             checkDeath.dead = true;
-            scrollSprite.body.velocity.x = 0.0001; // not 0 to not trigger the checkEnd function
-            end(true);
+            end(true, true);
         }
     } else {
         checkDeath.dead = false;
@@ -50,26 +48,28 @@ function checkDeath() {
 
 function checkEnd() {
     if (typeof checkEnd.ended == 'undefined') {
-        checkEnd.ended = false; // used to prevent the timeout function from being called every frame for a few seconds...
-    }
-    if (scrollSprite.body.velocity.x == 0) {
-        if (!checkEnd.ended) {
-            checkEnd.ended = true;
-            end();
-        }
-    } else {
         checkEnd.ended = false;
+    }
+    if (rob.alive) {
+        if (scrollSprite.body.velocity.x == 0) {
+            if (!checkEnd.ended) {
+                checkEnd.ended = true;
+                end();
+            }
+        } else {
+            checkEnd.ended = false;
+        }
     }
 }
 
 function crouch() {
     if (downKey.isDown) {
         isCrouching = true;
-        rob.body.setSize(10, 14, 3, 18); //14 instead of 16 to be able to fit on 1 square high passages in a wall while falling
+        rob.body.setSize(10, 14, 3, 18);
     } else if (isCrouching && canStand) {
         isCrouching = false;
         rob.animations.play('standing');
-        setTimeout(function () {
+        setTimeout(function() {
             if (!downKey.isDown) {
                 rob.animations.play('walk');
             }
@@ -89,22 +89,26 @@ function move() {
 }
 
 function recall() {
-    rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos) * 1.5;
+    if (rob.alive)
+        rob.body.velocity.x = (scrollSprite.x - rob.x - eqPos) * 1.5;
 }
 
-function end(dead = false) {
-    setTimeout(function() {
-        cleanPlay();
-        game.state.start("menu");
-    }, 4000);
+function end(dead = false, fall = false) {
+
+    // Sauvegarde de la progression
     if (storage['scores'][levelSelector][0] < uraniumCount) {
         storage['scores'][levelSelector][0] = uraniumCount;
         window.localStorage.setItem('LD39', JSON.stringify(storage));
     }
+
     if (!dead) {
+
+        // Jingle fin du niveau
         setTimeout(function() {
             sfx[4].play(false);
         }, 1000);
+
+        // On débloque un niveau
         if (storage['progression'] <= levelSelector) {
             setTimeout(function() {
                 sfx[8].play(false);
@@ -112,5 +116,34 @@ function end(dead = false) {
             storage['progression'] = levelSelector + 1;
             window.localStorage.setItem('LD39', JSON.stringify(storage));
         }
+
+    } else {
+
+        rob.alive = false;
+        scrollSprite.body.velocity.x = 0;
+        sfx[3].play(false);
+
+        if (!fall) {
+            rob.body.setSize(0, 0);
+            rob.body.velocity.y = -300;
+            rob.body.velocity.x = 50;
+        }
+
     }
+
+    // Retour au menu
+    graphics = game.add.graphics(0, 0);
+    graphics.fixedToCamera = true;
+    transition.active = true;
+    setTimeout(function() {
+        game.add.tween(transition).to({
+            radius: 0
+        }, 1000, Phaser.Easing.Cubic.In, true);
+    }, 500);
+
+    setTimeout(function() {
+        cleanPlay();
+        game.state.start("menu");
+    }, 2000);
+
 }

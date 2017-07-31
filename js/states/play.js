@@ -122,41 +122,49 @@ var playState = {
         downKey.onDown.add(function() {
             sfx[1].play(false);
             rob.animations.play('crouching');
-            setTimeout(function () {
+            setTimeout(function() {
                 if (downKey.isDown) {
                     rob.animations.play('crouch');
                 }
             }, 125);
         });
 
+        transition.active = false;
+        transition.radius = 512;
+
         game.renderer.renderSession.roundPixels = true;
     },
 
     update: function() {
+
         backerground.tilePosition.x = layerGround.position.x / 1.1;
         background.tilePosition.x = layerGround.position.x / 2;
         fallingFoes.forEach(updateFallingFoe);
         collisions();
         input();
-        recall();
-        checkDeath();
-        checkEnd();
-    },
 
-    render: function() {
-        // game.debug.body(rob);
+        if (rob.alive) {
+            checkDeath();
+            checkEnd();
+        }
+
+        recall();
+        drawPolygonTransition();
+
     }
+
 };
 
 function collisions() {
-    game.physics.arcade.collide(rob, layerGround);
-    game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
-    game.physics.arcade.collide(rob, foes, end, null, true);
-    game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
-    game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
+    if (rob.alive) {
+        game.physics.arcade.collide(rob, layerGround);
+        game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
+        game.physics.arcade.collide(rob, foes, end, null, true);
+        game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
+        game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
+    }
 
-    //foes
-    //game.physics.arcade.collide(fallingFoes, layerGround);
+    // Foes
     game.physics.arcade.collide(rob, staticsFoes, end, null, true);
     game.physics.arcade.collide(fallingFoes, layerGround, explodeFallingFoe);
     game.physics.arcade.collide(rob, fallingFoes, collisionFoeRob);
@@ -178,46 +186,5 @@ function cleanPlay() {
     if (levelSelector == 0) {
         tutoGroup.killAll();
     }
-}
-
-function tuto() {
-    var tutoScreens_jump = game.add.group();
-    var tutoScreens_crouch = game.add.group();
-    var tutoScreens_forward = game.add.group();
-    var tutoScreens_backward = game.add.group();
-    tutoGroup = game.add.group();
-    tutoGroup.addMultiple([tutoScreens_jump, tutoScreens_crouch, tutoScreens_backward, tutoScreens_forward]);
-    tutoGroup.enableBody = true;
-    map.createFromObjects('tuto', 35, 'tutoScreens_jump', 0, true, false, tutoScreens_jump);
-    map.createFromObjects('tuto', 36, 'tutoScreens_crouch', 0, true, false, tutoScreens_crouch);
-    map.createFromObjects('tuto', 38, 'tutoScreens_forward', 0, true, false, tutoScreens_forward);
-    map.createFromObjects('tuto', 37, 'tutoScreens_backward', 0, true, false, tutoScreens_backward);
-    tutoScreens_jump.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-    tutoScreens_jump.callAll('animations.play', 'animations', 'idle');
-    tutoScreens_crouch.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-    tutoScreens_crouch.callAll('animations.play', 'animations', 'idle');
-    tutoScreens_forward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-    tutoScreens_forward.callAll('animations.play', 'animations', 'idle');
-    tutoScreens_backward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-    tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
-}
-
-function updateFallingFoe(f){
-  if (f.x - 90 < rob.x) {
-    f.body.gravity.y = 200;
-  }
-}
-
-function explodeFallingFoe(f) {
-    f.animations.play('breaking');
-    f.body.enable = false;
-    setTimeout(function() {
-        f.visible = false;
-    }, 1000);
-}
-
-function collisionFoeRob(f) {
-    if (f.alive) {
-        end(true);
-    }
+    graphics.kill();
 }

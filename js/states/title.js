@@ -4,6 +4,9 @@ var titleInterval1;
 var titleInterval2;
 var titleJump = false;
 var crouched;
+var transition = new Object();
+var graphics;
+var pressedSpace = false;
 
 var titleState = {
 
@@ -61,7 +64,7 @@ var titleState = {
                     rob.animations.play('crouching');
                 }
                 crouched = true
-                setTimeout(function () {
+                setTimeout(function() {
                     rob.animations.play('crouch');
                 }, 125);
             } else {
@@ -69,7 +72,7 @@ var titleState = {
                     rob.animations.play('standing');
                 }
                 crouched = false;
-                setTimeout(function () {
+                setTimeout(function() {
                     rob.animations.play('walk');
                 }, 125);
             }
@@ -86,13 +89,25 @@ var titleState = {
             titleText[1].alpha = 1 - titleText[1].alpha;
         }, 500);
 
+        graphics = game.add.graphics(0, 0);
+        transition.active = false;
+        transition.radius = 512;
+
     },
 
     update: function() {
 
-        if (spaceKey.isDown) {
+        if (spaceKey.isDown && !pressedSpace) {
+            pressedSpace = true;
             cleanTitle();
-            game.state.start("menu");
+            transition.active = true;
+            game.add.tween(transition).to({
+                radius: 0
+            }, 1000, Phaser.Easing.Cubic.In, true);
+            setTimeout(function() {
+                graphics.kill();
+                game.state.start("menu");
+            }, 1500);
         }
         game.physics.arcade.collide(rob, layerGround);
 
@@ -104,6 +119,8 @@ var titleState = {
             rob.body.velocity.x = 70;
             rob.scale.x = 1;
         }
+
+        drawPolygonTransition();
 
     }
 }

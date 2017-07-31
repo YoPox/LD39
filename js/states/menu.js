@@ -37,51 +37,64 @@ var menuState = {
         initSprite(robot, [0.5, 0.94], [2, 2]);
 
         goldIcon = game.add.sprite(game.width - 32, 32, 'uranium', storage["scores"][levelSelector][1] * 1);
-        initSprite(goldIcon, [1, 0.5], [2, 2]);
+        initSprite(goldIcon, [1, 0.5]);
 
         uraniumIcon = game.add.sprite(game.width - 80, 32, 'uranium', 3);
         initSprite(uraniumIcon, [1, 0.5], [2, 2]);
 
-        levelScoresText = game.add.bitmapText(game.width - 128, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector])
-        initSprite(levelScoresText, [1, 0.5])
+        levelScoresText = game.add.bitmapText(game.width - 128, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector]);
+        initSprite(levelScoresText, [1, 0.5]);
 
+        graphics = game.add.graphics(0, 0);
+
+        game.add.tween(transition).to({
+            radius: 512
+        }, 1000, Phaser.Easing.Cubic.Out, true);
+        setTimeout(function() {
+            transition.active = false;
+        }, 1000);
     },
 
     update: function() {
-        if (spaceKey.isDown) {
-            start();
-        }
-        if (!moving && (rightKey.isDown || leftKey.isDown || upKey.isDown || downKey.isDown)) {
-            sfx[6].play(false);
-            key = 0;
-            if (downKey.isDown) {
-                key = 1;
-            } else if (leftKey.isDown) {
-                robot.scale.x = -2;
-                key = 2;
-            } else if (rightKey.isDown) {
-                robot.scale.x = 2;
-                key = 3;
+        if (!transition.active) {
+            if (spaceKey.isDown) {
+                start();
             }
-            if (roads[levelSelector][key] != -1 && !moving) {
-                newLevelSelector = roads[levelSelector][key];
-                moving = true;
-                tween = game.add.tween(robot).to({
-                    x: robot.x + (platformPosition[newLevelSelector][0] - platformPosition[levelSelector][0]) * 2,
-                    y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
-                }, 750, Phaser.Easing.Cubic.Out, true);
-                levelSelector = newLevelSelector;
-                // Text update
-                if (storage['progression'] >= levelSelector) {
-                    levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
-                } else {
-                    levelScoresText.text = "Blocked";
+
+            if (!moving && (rightKey.isDown || leftKey.isDown || upKey.isDown || downKey.isDown)) {
+                sfx[6].play(false);
+                key = 0;
+                if (downKey.isDown) {
+                    key = 1;
+                } else if (leftKey.isDown) {
+                    robot.scale.x = -2;
+                    key = 2;
+                } else if (rightKey.isDown) {
+                    robot.scale.x = 2;
+                    key = 3;
                 }
-                levelNameText.text = levelNames[levelSelector];
-                goldIcon.frame = storage["scores"][levelSelector][1] * 1;
-                tween.onComplete.add(stopMoving);
+                if (roads[levelSelector][key] != -1 && !moving) {
+                    newLevelSelector = roads[levelSelector][key];
+                    moving = true;
+                    tween = game.add.tween(robot).to({
+                        x: robot.x + (platformPosition[newLevelSelector][0] - platformPosition[levelSelector][0]) * 2,
+                        y: robot.y + (platformPosition[newLevelSelector][1] - platformPosition[levelSelector][1]) * 2
+                    }, 750, Phaser.Easing.Cubic.Out, true);
+                    levelSelector = newLevelSelector;
+                    // Text update
+                    if (storage['progression'] >= levelSelector) {
+                        levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
+                    } else {
+                        levelScoresText.text = "Blocked";
+                    }
+                    levelNameText.text = levelNames[levelSelector];
+                    goldIcon.frame = storage["scores"][levelSelector][1] * 1;
+                    tween.onComplete.add(stopMoving);
+                }
             }
-        }
+
+        } else { drawPolygonTransition(); }
+
     }
 
 }
@@ -106,4 +119,5 @@ function cleanMenu() {
         levelSprites[i].kill();
     }
     levelSprites = [];
+    graphics.kill();
 }
