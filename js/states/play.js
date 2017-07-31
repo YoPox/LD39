@@ -76,8 +76,9 @@ var playState = {
         // Foes
         foes = game.add.group();
         staticsFoes = game.add.group(foes);
+        map.createFromObjects("objects", 46, 'tiles', 45, true, false, staticsFoes);
         fallingFoes = game.add.group(foes);
-        map.createFromObjects("objects", 41, 'fallingRock', 0, true, false, fallingFoes)
+        map.createFromObjects("objects", 41, 'fallingRock', 0, true, false, fallingFoes);
         game.physics.arcade.enable(foes);
         fallingFoes.setAll("body.bounce.y", 0.2);
         fallingFoes.callAll('animations.add', 'animations', 'falling', [0, 1, 2], 4, true);
@@ -86,6 +87,7 @@ var playState = {
         fallingFoes.setAll("body.checkCollision.up", false);
         fallingFoes.setAll("body.checkCollision.right", false);
         fallingFoes.setAll("body.checkCollision.left", false);
+        staticsFoes.setAll("body.immovable", true);
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
@@ -156,10 +158,10 @@ function collisions() {
     game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
 
     //foes
-    //game.physics.arcade.collide(fallingFoes, layerGround);
     game.physics.arcade.collide(rob, staticsFoes, end, null, true);
     game.physics.arcade.collide(fallingFoes, layerGround, explodeFallingFoe);
     game.physics.arcade.collide(rob, fallingFoes, collisionFoeRob);
+    game.physics.arcade.collide(rob, staticsFoes, collisionFoeRob);
 }
 
 function input() {

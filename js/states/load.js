@@ -22,12 +22,13 @@ var loadState = {
         game.load.tilemap('map1', '../../assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map2', '../../assets/maps/map2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map3', '../../assets/maps/map3.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.image('tiles', '../../assets/sprites/tileset.png');
+        game.load.spritesheet('tiles', '../../assets/sprites/tileset.png', 16, 16);
         game.load.image('background', '../../assets/sprites/background.png');
         game.load.image('backerground', '../../assets/sprites/backerground.png');
         game.load.image('counter', '../../assets/sprites/counter.png');
         game.load.image("menuBackground", '../../assets/sprites/island.png');
         game.load.image("level", '../../assets/sprites/level.png');
+        game.load.image('foes', '../../assets/sprites/foes.png');
         game.load.audio('sfx_jump', '../../assets/music/sfx_jump.ogg');
         game.load.audio('sfx_crouch', '../../assets/music/sfx_crouch.ogg');
         game.load.audio('sfx_uranium', '../../assets/music/sfx_uranium.ogg');

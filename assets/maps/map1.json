@@ -735,6 +735,70 @@
                  "width":16,
                  "x":1535,
                  "y":35
+                }, 
+                {
+                 "gid":46,
+                 "height":16,
+                 "id":164,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":704,
+                 "y":240
+                }, 
+                {
+                 "gid":46,
+                 "height":16,
+                 "id":165,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":1247,
+                 "y":240
+                }, 
+                {
+                 "gid":46,
+                 "height":16,
+                 "id":166,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":1455,
+                 "y":256
+                }, 
+                {
+                 "gid":46,
+                 "height":16,
+                 "id":167,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":272,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -754,7 +818,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":162,
+ "nextobjectid":169,
  "orientation":"orthogonal",
  "properties":
     {
@@ -767,7 +831,7 @@
          "firstgid":1,
          "image":"..\/sprites\/tileset.png",
          "imageheight":16,
-         "imagewidth":720,
+         "imagewidth":736,
          "margin":0,
          "name":"tiles",
          "properties":
@@ -775,7 +839,7 @@
 
             },
          "spacing":0,
-         "tilecount":45,
+         "tilecount":46,
          "tileheight":16,
          "tilewidth":16
         }],
