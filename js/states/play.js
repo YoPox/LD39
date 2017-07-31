@@ -62,7 +62,9 @@ var playState = {
         // Player
         rob = game.add.sprite(-64, 288 - 136, 'robot');
         rob.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 14, true);
-        rob.animations.add('crouch', [8, 9, 10, 11, 12, 13], 14, true);
+        rob.animations.add('crouching', [8, 9, 10, 11, 12, 13], 48, false);
+        rob.animations.add('crouch', [14, 15, 16, 17, 18, 19], 14, true);
+        rob.animations.add('standing', [13, 12, 11, 10, 9, 8], 48, false);
         initSprite(rob, [0, 0]);
         rob.animations.play('walk');
         game.physics.arcade.enable(rob);
@@ -114,7 +116,15 @@ var playState = {
         gui[1].fixedToCamera = true;
 
         // Sound effects
-        downKey.onDown.add(function() { sfx[1].play(false); });
+        downKey.onDown.add(function() {
+            sfx[1].play(false);
+            rob.animations.play('crouching');
+            setTimeout(function () {
+                if (downKey.isDown) {
+                    rob.animations.play('crouch');
+                }
+            }, 125);
+        });
 
         game.renderer.renderSession.roundPixels = true;
     },
