@@ -53,6 +53,13 @@ var playState = {
             tuto();
         }
 
+        // Barrels
+        barrel = game.add.group();
+        barrel.enableBody = true;
+        map.createFromObjects('objects', 47, 'barrel', 0, true, false, barrel);
+        barrel.callAll('animations.add', 'animations', 'idle', [2,3,4,5,6,7], 6, true);
+        barrel.callAll('animations.play', 'animations', 'idle');
+
         // Steam
         steam = game.add.group();
         steam.enableBody = true;
@@ -105,13 +112,6 @@ var playState = {
         uranium.callAll('animations.add', 'animations', 'idle', [0, 1, 0, 2], 4, true);
         uranium.callAll('animations.play', 'animations', 'idle');
         uraniumCount = 0;
-
-        // Barrels
-        barrel = game.add.group();
-        barrel.enableBody = true;
-        map.createFromObjects('objects', , 'barrel', 0, true, false, barrel);
-        barrel.callAll('animations.add', 'animations', 'idle', [2,3,4,5,6,7], 6, true);
-        barrel.callAll('animations.play', 'animations', 'idle');
 
         // Stand up prevention
         canStand = true;
