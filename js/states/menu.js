@@ -27,7 +27,7 @@ var menuState = {
             levelSprites.push(game.add.sprite(2 * platformPosition[i][0] - 10, 2 * platformPosition[i][1] - 10, 'level'));
             levelSprites[i].scale.x = 2;
             levelSprites[i].scale.y = 2;
-            if (i <= storage["progression"]) {
+            if (levelUnlocked(i)) {
                 if (storage["scores"][i][0] > 0 && storage["scores"][i][0] == maxUranium[i]) {
                     levelSprites[i].tint = 0xA5D6A7;
                 }
@@ -91,7 +91,7 @@ var menuState = {
                     levelSelector = newLevelSelector;
                     // Text update
                     if (levelUnlocked(levelSelector)) {
-                      levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
+                        levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
                     }
                     else {
                         levelScoresText.text = "Locked";
@@ -140,18 +140,18 @@ function cleanMenu() {
 }
 
 function levelUnlocked(i) {
-  if (storage['progression'] < levelSelector) {
+  if (storage['progression'] < i) {
     return false;
   }
-  if (levelSelector == 6) {
+  if (i == 6) {
     for (var i = 0; i < 6; i++) {
       if (storage['scores'][i][0] < maxUranium[i]) {
         return false;
       }
     }
   }
-  else if (levelSelector == 7) {
-    for (var i = 0; i < 6; i++) {
+  else if (i == 7) {
+    for (var i = 0; i < 7; i++) {
       if (storage['scores'][i][0] < maxUranium[i] | !(storage['scores'][i][1])) {
         return false;
       }
