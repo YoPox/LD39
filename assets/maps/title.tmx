@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="16" tileheight="16" nextobjectid="97">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="62" columns="62">
-  <image source="../sprites/tileset.png" width="992" height="16"/>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="16" tileheight="16" nextobjectid="101">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="67" columns="67">
+  <image source="../sprites/tileset.png" width="1072" height="16"/>
  </tileset>
  <layer name="ground" width="40" height="18">
   <data encoding="csv">
@@ -21,13 +21,19 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
-6,4,3,4,7,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,4,7,
-7,8,3,3,6,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,3,3,6
+5,8,7,6,7,3,4,5,8,5,3,4,5,8,6,4,6,7,3,5,7,5,5,4,4,3,4,6,6,3,3,3,8,3,3,5,3,8,3,3,
+7,3,7,6,7,5,4,7,6,3,7,3,6,7,6,5,3,7,3,5,6,7,5,3,3,8,3,5,6,5,8,3,5,3,3,8,3,3,8,3
 </data>
  </layer>
  <objectgroup name="steam">
   <object id="56" gid="34" x="144" y="192" width="16" height="32"/>
   <object id="68" gid="34" x="304" y="208" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects">
+  <object id="97" gid="61" x="330" y="61" width="16" height="16"/>
+  <object id="98" gid="62" x="218" y="109" width="16" height="16"/>
+  <object id="99" gid="60" x="112" y="176" width="16" height="16"/>
+  <object id="100" gid="61" x="16" y="240" width="16" height="16"/>
  </objectgroup>
  <layer name="scenery" width="40" height="18">
   <data encoding="csv">

@@ -56,6 +56,7 @@ function startLoading() {
     game.load.image("menuBackground", '../../assets/sprites/island.png');
     game.load.image("level", '../../assets/sprites/level.png');
     game.load.image('foes', '../../assets/sprites/foes.png');
+    game.load.image('urunium', '../../assets/sprites/urunium.png');
     game.load.audio('sfx_jump', '../../assets/music/sfx_jump.ogg');
     game.load.audio('sfx_crouch', '../../assets/music/sfx_crouch.ogg');
     game.load.audio('sfx_uranium', '../../assets/music/sfx_uranium.ogg');
@@ -108,4 +109,4 @@ function endLoading() {
 
 function updateLoading(progress, cacheKey, success, totalLoaded, totalFiles) {
     loadText.setText("Loading : " + progress + "%");
-  }
+}

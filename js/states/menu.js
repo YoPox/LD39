@@ -70,7 +70,6 @@ var menuState = {
             }
 
             if (!moving && (rightKey.isDown || leftKey.isDown || upKey.isDown || downKey.isDown)) {
-                sfx[6].play(false);
                 key = 0;
                 if (downKey.isDown) {
                     key = 1;
@@ -82,6 +81,7 @@ var menuState = {
                     key = 3;
                 }
                 if (roads[levelSelector][key] != -1 && !moving) {
+                    sfx[6].play(false);
                     newLevelSelector = roads[levelSelector][key];
                     moving = true;
                     var tween = game.add.tween(robot).to({
@@ -91,9 +91,8 @@ var menuState = {
                     levelSelector = newLevelSelector;
                     // Text update
                     if (levelUnlocked(levelSelector)) {
-                      levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
-                    }
-                    else {
+                        levelScoresText.text = '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector];
+                    } else {
                         levelScoresText.text = "Locked";
                     }
                     levelNameText.text = levelNames[levelSelector];
@@ -140,22 +139,21 @@ function cleanMenu() {
 }
 
 function levelUnlocked(i) {
-  if (storage['progression'] < levelSelector) {
-    return false;
-  }
-  if (levelSelector == 6) {
-    for (var i = 0; i < 6; i++) {
-      if (storage['scores'][i][0] < maxUranium[i]) {
+    if (storage['progression'] < levelSelector) {
         return false;
-      }
     }
-  }
-  else if (levelSelector == 7 && levelSixUnlocked() && levelSevenUnlocked()) {
-    for (var i = 0; i < 6; i++) {
-      if (storage['scores'][i][0] < maxUranium[i] | !(storage['scores'][i][1])) {
-        return false;
-      }
+    if (levelSelector == 6) {
+        for (var i = 0; i < 6; i++) {
+            if (storage['scores'][i][0] < maxUranium[i]) {
+                return false;
+            }
+        }
+    } else if (levelSelector == 7 && levelSixUnlocked() && levelSevenUnlocked()) {
+        for (var i = 0; i < 6; i++) {
+            if (storage['scores'][i][0] < maxUranium[i] | !(storage['scores'][i][1])) {
+                return false;
+            }
+        }
     }
-  }
-  return true;
+    return true;
 }
