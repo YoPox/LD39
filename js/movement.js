@@ -16,6 +16,8 @@ function jump() {
     } else {
         if (jump.justJumped) {
             jump.justJumped = false;
+            if (spaceKey.isDown)
+                sfx[0].play(false);
             setTimeout(function() {
                 jump.canJump = false;
             }, isCrouching ? 50 : 220);
@@ -47,8 +49,8 @@ function checkDeath() {
         checkDeath.dead = false;
     }
     if (storage['scores'][levelSelector][0] < uraniumCount) {
-      storage['scores'][levelSelector][0] = uraniumCount;
-      window.localStorage.setItem('LD39',JSON.stringify(storage));
+        storage['scores'][levelSelector][0] = uraniumCount;
+        window.localStorage.setItem('LD39', JSON.stringify(storage));
     }
 }
 
@@ -72,6 +74,7 @@ function checkEnd() {
 function crouch() {
     if (downKey.isDown) {
         isCrouching = true;
+        sfx[1].play(false);
         rob.animations.play('crouch');
         rob.body.setSize(10, 14, 3, 18); //14 instead of 16 to be able to fit on 1 square high passages in a wall while falling
     } else if (isCrouching && !rob.body.blocked.up) {

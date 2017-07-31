@@ -1,4 +1,5 @@
 var storage = {};
+var sfx = [];
 
 var loadState = {
 
@@ -23,25 +24,29 @@ var loadState = {
         game.load.image('counter', '../../assets/sprites/counter.png');
         game.load.bitmapFont('SullyVerge', '../../assets/font/SullyVerge_0.png', '../../assets/font/SullyVerge.fnt');
         game.load.image("menuBackground", '../../assets/sprites/island.png');
-        // game.load.audio('audio_sprint', 'assets/audio/bruitages/sprint.ogg');
+        game.load.audio('sfx_jump', '../../assets/music/sfx_jump.ogg');
+        game.load.audio('sfx_crouch', '../../assets/music/sfx_crouch.ogg');
 
         if (window.localStorage['LD39']) {
-          storage = JSON.parse(window.localStorage['LD39']);
-        }
-        else {
-          scores = [];
-          for (var i = 0; i < roads.length; i++) {
-            scores.push([0, false]);
-          }
-          storage['scores'] = scores;
-          storage['progression'] = 0;
+            storage = JSON.parse(window.localStorage['LD39']);
+        } else {
+            scores = [];
+            for (var i = 0; i < roads.length; i++) {
+                scores.push([0, false]);
+            }
+            storage['scores'] = scores;
+            storage['progression'] = 0;
         }
     },
 
     create: function() {
 
-        // audio_sprint = game.add.audio('audio_sprint');
-        // audio_sprint.volume = 0.45;
+        sfx.push(game.add.audio('sfx_jump'));
+        sfx.push(game.add.audio('sfx_crouch'));
+        for (var sfx_item in sfx) {
+            sfx_item.volume = 0.4;
+        }
+
 
         spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
