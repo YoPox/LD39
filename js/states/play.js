@@ -73,10 +73,11 @@ var playState = {
 
         // Foes
         foes = game.add.group();
-        staticsFoes = game.add.group();
-        foes.add(staticsFoes);
-        fallingFoes = game.add.group();
-        foes.add(fallingFoes);
+        staticsFoes = game.add.group(foes);
+        fallingFoes = game.add.group(foes);
+        map.createFromObjects("fallingFoes", 41, 'fallingRock', 0, true, false, fallingFoes)
+        game.physics.arcade.enable(foes);
+        fallingFoes.setAll("body.bounce.y", 0.2);
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
@@ -118,6 +119,7 @@ var playState = {
     update: function() {
         backerground.tilePosition.x = layerGround.position.x / 1.1;
         background.tilePosition.x = layerGround.position.x / 2;
+        fallingFoes.forEach(updateFallingFoe);
         collisions();
         input();
         recall();
@@ -133,10 +135,15 @@ var playState = {
 function collisions() {
     game.physics.arcade.collide(rob, layerGround);
     game.physics.arcade.collide(rob, uranium, collectUranium, null, this);
-    game.physics.arcade.collide(fallingFoes, layerGround);
     game.physics.arcade.collide(rob, foes, end, null, true);
     game.physics.arcade.overlap(rob, blocker, function() { canStand = false; });
     game.physics.arcade.overlap(rob, stander, function() { canStand = true; });
+
+    //foes
+    //game.physics.arcade.collide(fallingFoes, layerGround);
+    game.physics.arcade.collide(rob, staticsFoes, end, null, true);
+    game.physics.arcade.collide(fallingFoes, layerGround, explodeFallingFoe);
+    game.physics.arcade.collide(rob, fallingFoes, collisionFoeRob);
 }
 
 function input() {
@@ -177,4 +184,24 @@ function tuto() {
     tutoScreens_forward.callAll('animations.play', 'animations', 'idle');
     tutoScreens_backward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
     tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
+}
+
+function updateFallingFoe(f){
+  if (f.x - 128 < rob.x) {
+    f.body.gravity.y = 200;
+  }
+}
+
+function explodeFallingFoe(f) {
+  // f.play("explosion");
+  f.body.enable = false;
+  setTimeout(function() {
+    f.visible = false;
+  }, 1000);
+}
+
+function collisionFoeRob(f) {
+  if (f.alive) {
+    end(true);
+  }
 }
