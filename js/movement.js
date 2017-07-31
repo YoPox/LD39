@@ -97,8 +97,9 @@ function end(dead=false) {
     window.localStorage.setItem('LD39',JSON.stringify(storage));
   }
   if (!dead) {
-    if (storage['progression'] < levelSelector){
+    if (storage['progression'] <= levelSelector){
       storage['progression'] = levelSelector + 1;
+      window.localStorage.setItem('LD39',JSON.stringify(storage));
     }
   }
 }

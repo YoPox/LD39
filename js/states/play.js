@@ -1,6 +1,7 @@
 var scrollSprite;
 var uranium;
 var steam;
+var tutoGroup;
 var tutoScreens_jump;
 var tutoScreens_crouch;
 var tutoScreens_forward;
@@ -44,26 +45,7 @@ var playState = {
 
         // Tutorial
         if (levelSelector == 0) {
-            var tutoScreens_jump = game.add.group();
-            var tutoScreens_crouch = game.add.group();
-            var tutoScreens_forward = game.add.group();
-            var tutoScreens_backward = game.add.group();
-            tutoScreens_jump.enableBody = true;
-            tutoScreens_crouch.enableBody = true;
-            tutoScreens_forward.enableBody = true;
-            tutoScreens_backward.enableBody = true;
-            map.createFromObjects('tuto', 35, 'tutoScreens_jump', 0, true, false, tutoScreens_jump);
-            map.createFromObjects('tuto', 36, 'tutoScreens_crouch', 0, true, false, tutoScreens_crouch);
-            map.createFromObjects('tuto', 38, 'tutoScreens_forward', 0, true, false, tutoScreens_forward);
-            map.createFromObjects('tuto', 37, 'tutoScreens_backward', 0, true, false, tutoScreens_backward);
-            tutoScreens_jump.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-            tutoScreens_jump.callAll('animations.play', 'animations', 'idle');
-            tutoScreens_crouch.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-            tutoScreens_crouch.callAll('animations.play', 'animations', 'idle');
-            tutoScreens_forward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-            tutoScreens_forward.callAll('animations.play', 'animations', 'idle');
-            tutoScreens_backward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
-            tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
+          tuto();
         }
 
         // Steam
@@ -148,6 +130,31 @@ function input() {
 function cleanPlay() {
     gui = [];
     uranium.killAll();
-    smoke.killAll();
+    steam.killAll();
     foes.killAll();
+    if (levelSelector == 0) {
+      tutoGroup.killAll();
+    }
+}
+
+function tuto() {
+  var tutoScreens_jump = game.add.group();
+  var tutoScreens_crouch = game.add.group();
+  var tutoScreens_forward = game.add.group();
+  var tutoScreens_backward = game.add.group();
+  tutoGroup = game.add.group();
+  tutoGroup.addMultiple([tutoScreens_jump, tutoScreens_crouch, tutoScreens_backward, tutoScreens_forward]);
+  tutoGroup.enableBody = true;
+  map.createFromObjects('tuto', 35, 'tutoScreens_jump', 0, true, false, tutoScreens_jump);
+  map.createFromObjects('tuto', 36, 'tutoScreens_crouch', 0, true, false, tutoScreens_crouch);
+  map.createFromObjects('tuto', 38, 'tutoScreens_forward', 0, true, false, tutoScreens_forward);
+  map.createFromObjects('tuto', 37, 'tutoScreens_backward', 0, true, false, tutoScreens_backward);
+  tutoScreens_jump.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+  tutoScreens_jump.callAll('animations.play', 'animations', 'idle');
+  tutoScreens_crouch.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+  tutoScreens_crouch.callAll('animations.play', 'animations', 'idle');
+  tutoScreens_forward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+  tutoScreens_forward.callAll('animations.play', 'animations', 'idle');
+  tutoScreens_backward.callAll('animations.add', 'animations', 'idle', [0, 1, 2], 2, true);
+  tutoScreens_backward.callAll('animations.play', 'animations', 'idle');
 }
