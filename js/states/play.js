@@ -78,6 +78,9 @@ var playState = {
         map.createFromObjects("fallingFoes", 41, 'fallingRock', 0, true, false, fallingFoes)
         game.physics.arcade.enable(foes);
         fallingFoes.setAll("body.bounce.y", 0.2);
+        fallingFoes.callAll('animations.add', 'animations', 'falling', [0, 1, 2], 4, true);
+        fallingFoes.callAll('animations.add', 'animations', 'breaking', [3, 4, 5, 6, 7, 8, 9, 10], 14, false);
+        fallingFoes.callAll('animations.play', 'animations', 'falling');
 
         // Invisible scroll sprite
         scrollSprite = game.add.sprite(game.width / 2 - 128, game.height / 2);
@@ -193,7 +196,7 @@ function updateFallingFoe(f){
 }
 
 function explodeFallingFoe(f) {
-  // f.play("explosion");
+  f.animations.play('breaking');
   f.body.enable = false;
   setTimeout(function() {
     f.visible = false;
