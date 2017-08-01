@@ -1,6 +1,6 @@
 var text1 = "In the near future, Rob is a robot in a nuclear plant.\nHe has to bring to the reactor uranium to power it.";
-var text2 = "But one day, the ";
-var text3 = "blabla3";
+var text2 = "But one day, the nuclear plant explosed, destroying every life on the planet, except Rob.";
+var text3 = "To keep ";
 
 
 var introState = {
