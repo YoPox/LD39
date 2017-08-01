@@ -16,5 +16,6 @@ game.state.add("load", loadState);
 game.state.add("menu", menuState);
 game.state.add("play", playState);
 game.state.add("title", titleState);
+game.state.add("intro", introState);
 
 game.state.start("load");
