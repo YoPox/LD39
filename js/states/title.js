@@ -123,6 +123,12 @@ var titleState = {
             setTimeout(function() {
                 cleanTitle();
                 game.state.start("menu");
+                if(storage['progression'] == 0) {
+                  game.state.start('intro');
+                }
+                else {
+                  game.state.start('menu');
+                }
             }, 1300);
         }
         game.physics.arcade.collide(rob, layerGround);
