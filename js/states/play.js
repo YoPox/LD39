@@ -29,7 +29,7 @@ var playState = {
     create: function() {
         // MUSIC PLAYBACK
         var buffer = game.cache.getBinary('bgm_play');
-        // music.play(buffer);
+        music.play(buffer);
 
         // Backerground
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");

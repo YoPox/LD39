@@ -43,6 +43,8 @@ function startLoading() {
     game.load.spritesheet("tutoScreens_forward", "../../assets/sprites/tuto_forward.png", 64, 32);
     game.load.spritesheet("tutoScreens_backward", "../../assets/sprites/tuto_backward.png", 64, 32);
     game.load.spritesheet("barrel", "../../assets/sprites/barrel.png", 32, 32);
+    game.load.spritesheet('tiles', '../../assets/sprites/tileset.png', 16, 16);
+    game.load.spritesheet('next', '../../assets/sprites/next.png', 16, 16);
     game.load.tilemap('titleMap', '../../assets/maps/title.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('map0', '../../assets/maps/map0.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('map1', '../../assets/maps/map1.json', null, Phaser.Tilemap.TILED_JSON);
@@ -52,7 +54,6 @@ function startLoading() {
     game.load.tilemap('map5', '../../assets/maps/map5.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('map6', '../../assets/maps/map6.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('map7', '../../assets/maps/map7.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.spritesheet('tiles', '../../assets/sprites/tileset.png', 16, 16);
     game.load.image('background', '../../assets/sprites/background.png');
     game.load.image('backerground', '../../assets/sprites/backerground.png');
     game.load.image('counter', '../../assets/sprites/counter.png');
