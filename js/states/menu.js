@@ -15,7 +15,7 @@ var menuState = {
         cleanMenu();
 
         var buffer = game.cache.getBinary('bgm_menu');
-        // music.play(buffer);
+        music.play(buffer);
 
         background = game.add.sprite(0, 0, "menuBackground");
         background.scale.x = 2;
