@@ -139,16 +139,16 @@ function cleanMenu() {
 }
 
 function levelUnlocked(i) {
-    if (storage['progression'] < levelSelector) {
+    if (storage['progression'] < i) {
         return false;
     }
-    if (levelSelector == 6) {
+    if (i == 6) {
         for (var i = 0; i < 6; i++) {
             if (storage['scores'][i][0] < maxUranium[i]) {
                 return false;
             }
         }
-    } else if (levelSelector == 7 && levelSixUnlocked() && levelSevenUnlocked()) {
+    } else if (i == 7) {
         for (var i = 0; i < 6; i++) {
             if (storage['scores'][i][0] < maxUranium[i] | !(storage['scores'][i][1])) {
                 return false;
