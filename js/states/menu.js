@@ -41,13 +41,13 @@ var menuState = {
         robot.animations.play('idle');
         initSprite(robot, [0.5, 0.94], [2, 2]);
 
-        goldIcon = game.add.sprite(game.width - 32, 32, 'barrel', storage["scores"][levelSelector][1] * 1);
-        initSprite(goldIcon, [1, 0.5]);
+        goldIcon = game.add.sprite(game.width - 8, 48, 'barrel', storage["scores"][levelSelector][1] * 1);
+        initSprite(goldIcon, [1, 0.5], [2, 2]);
 
         uraniumIcon = game.add.sprite(game.width - 80, 32, 'uranium', 3);
         initSprite(uraniumIcon, [1, 0.5], [2, 2]);
 
-        levelScoresText = game.add.bitmapText(game.width - 128, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector]);
+        levelScoresText = game.add.bitmapText(game.width - 120, 32, 'SullyVerge', '' + storage['scores'][levelSelector][0] + ' / ' + maxUranium[levelSelector]);
         initSprite(levelScoresText, [1, 0.5]);
 
         graphics = game.add.graphics(0, 0);
