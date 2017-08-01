@@ -99,7 +99,6 @@ var titleState = {
     },
 
     update: function() {
-
         if (spaceKey.isDown && !pressedSpace) {
             pressedSpace = true;
             sfx[7].play();
