@@ -10,6 +10,7 @@ var goldIcon;
 var menuState = {
 
     create: function() {
+        game.stage.backgroundColor = "#181225";
 
         cleanMenu();
 
