@@ -146,7 +146,6 @@ function cleanTitle() {
     clearInterval(titleInterval1);
     clearInterval(titleInterval2);
     titleText = [];
-    titleText.kill();
     titleImage.kill();
     graphics.kill();
 }
