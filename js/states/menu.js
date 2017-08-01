@@ -143,7 +143,7 @@ function levelUnlocked(i) {
         return false;
     }
     if (i == 6) {
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 5; i++) {
             if (storage['scores'][i][0] < maxUranium[i]) {
                 return false;
             }
