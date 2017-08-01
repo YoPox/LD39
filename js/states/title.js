@@ -145,12 +145,8 @@ var titleState = {
 function cleanTitle() {
     clearInterval(titleInterval1);
     clearInterval(titleInterval2);
-<<<<<<< HEAD
     titleText = [];
-}
-=======
     titleText.kill();
     titleImage.kill();
     graphics.kill();
 }
->>>>>>> 9b2d51d74e907976efce94db762a62c47d7b43d9
