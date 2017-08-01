@@ -20,6 +20,8 @@ var titleState = {
         // music.play(buffer);
 
         backerground = game.add.tileSprite(0, 0, 4096, 288, "backerground");
+        background = game.add.tileSprite(0, 0, 4096, 288, "background");
+        background.x = 64;
 
         // Map init
         map = game.add.tilemap('titleMap');
@@ -68,7 +70,7 @@ var titleState = {
         // Text
         titleImage = game.add.sprite(game.width / 2, game.height / 4, 'urunium');
         initSprite(titleImage, [0.5, 0.5]);
-        titleText = game.add.bitmapText(game.width / 2, game.height / 2 + 16, 'SullyVerge', 'Press SPACE to start', 16);
+        titleText = game.add.bitmapText(game.width / 2, game.height / 2 + 32, 'SullyVerge', 'Press SPACE to start', 16);
         initSprite(titleText, [0.5, 0.5]);
 
         // Rob animation
