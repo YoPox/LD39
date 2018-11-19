@@ -1,5 +1,9 @@
 # LD39
 
+[![LD39](https://img.shields.io/badge/Ludum%20Dare-39-orange.svg)](https://ldjam.com/events/ludum-dare/39/urunium) ![Rating 3.7 / 5 (35)](https://img.shields.io/badge/overall-3.7%20%2F%205%20(35)-brightgreen.svg)
+
+![Gameplay du jeu](assets/7516.gif)
+
 ## Setup
 
 To setup the game folder, run `npm install` at root.
