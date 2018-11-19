@@ -2,7 +2,9 @@
 
 [![LD39](https://img.shields.io/badge/Ludum%20Dare-39-orange.svg)](https://ldjam.com/events/ludum-dare/39/urunium) ![Rating 3.7 / 5 (35)](https://img.shields.io/badge/overall-3.7%20%2F%205%20(35)-brightgreen.svg)
 
-<div style="width: 320px; margin: auto; padding: 32px 0;"><img src="assets/7516.gif" style="width: 320px"></img></div>
+<p align="center">
+    <img src="assets/7516.gif" style="width: 320px" />
+</p>
 
 ## Setup
 
